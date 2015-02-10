@@ -7,8 +7,8 @@
 <b>&nbsp;&nbsp;status:</b>&nbsp;Close Type Developing<br/>
 <b>&nbsp;&nbsp;&nbsp;&nbsp;build:</b>&nbsp;UNABLE</p>
 <p><b>当前版本：</b>4.2.0<br/>
-<b>代码状态：</b>封闭开发<br/>
-<b>正常运行：</b>否</p>
+<b>代码状态：</b>封闭开发中<br/>
+<b>正常运行：</b>无内容</p>
 <p><b>Info:</b> Your are not recommend to clone for now.</p>
 <p><b>提示：</b>我们不建议您现在复制代码</p>
 <h3>License</h3>
