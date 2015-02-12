@@ -1,2 +1,0 @@
-class WebShellController < ApplicationController
-end
