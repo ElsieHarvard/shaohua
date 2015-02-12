@@ -3,16 +3,11 @@ Rails.application.routes.draw do
   # Homepage of the Website
   get 'web_shell/index'
 
-  # Visit Article
-  namespace :article do
-    get 'list', to: 'type#all'
-    get 'type/tanyoulunjin'
-    get 'type/fushengsanji'
-    get 'type/suosiwuxie'
-    get 'type/shoubushijuan'
-    get 'type/qingchunshiyi'
-    get 'type/qianzhendichang'
-  end
+  # Articles
+  # New Article
+  get 'article/new', to: 'articles#new_article'
+  # Create Article
+  post 'article/create', to: 'articles#create_article'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
