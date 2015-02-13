@@ -678,7 +678,7 @@ Main components
     /* change the height according to your needs - you can even set height: auto */
     height: 340px;
     /* here you set the number of columns - use width percentage */
-    width: 14%;
+    width: 23%;
     float: left;
     margin-right: 2.66%;
     border-right: 1px solid #e2e3df;
@@ -687,7 +687,7 @@ Main components
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .cd-primary-nav .cd-secondary-nav > li:nth-child(6n+2) {
+  .cd-primary-nav .cd-secondary-nav > li:nth-child(4n+2) {
     /* +2 because we have 2 list items with display:none */
     margin-right: 0;
     border-right: none;

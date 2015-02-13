@@ -1,5 +1,9 @@
-<% title '新建文章 - '%>
-<%= form_tag({:controller=>"articles",:action=>"create_article"},{:method=>"post",:multipart=>"true",:onkeydown=>"if(event.ctrlKey&&event.keyCode==13)this.submit()"}) do %>
+<% title '编辑文章 - '%>
+<%= form_tag({:controller=>"articles",:action=>"update_article"},{:method=>"put",:multipart=>"true",:onkeydown=>"if(event.ctrlKey&&event.keyCode==13)this.submit()"}) do %>
+    <div class="input-group">
+        <span class="input-group-addon chinese">文章哈希</span>
+        <%= text_field "article","archash",:class=>"form-control chinese",:placeholder=>"ArticleHash",:required=>"true"%>
+    </div>
     <div class="input-group">
         <span class="input-group-addon chinese">文章标题</span>
         <%= text_field "article","arctitle",:class=>"form-control chinese",:placeholder=>"ArticleTitle",:required=>"true"%>

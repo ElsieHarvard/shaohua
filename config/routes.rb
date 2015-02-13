@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get 'article/new', to: 'articles#new_article'
   # Create Article
   post 'article/create', to: 'articles#create_article'
+  # Edit Article
+  get 'article/edit', to: 'articles#edit_article'
+  # Update Article
+  put 'article/update', to: 'articles#update_article'
   # Show Article
   get 'article/:hash', to: 'articles#show_article'
   # Show Article List

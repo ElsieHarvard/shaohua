@@ -5,8 +5,13 @@ class ArticlesController < ApplicationController
   def new_article
   end
   def show_article
-    @article = Article.arcfind(params[:hash])
-    render plain: @article.inspect # debug
+    if ["prose","novel","poetry","drama"].include? params[:hash]
+      raise params
+    end
+    if /\h{39}/.match params[:hash]
+      @article = Article.arcfind(params[:hash].downcase)
+      # render plain: @article.inspect # debug
+    end
   end
   def create_article
     @article = firewall_article(Article.new(firewall_create_article_params))
@@ -19,21 +24,34 @@ class ArticlesController < ApplicationController
     end
     redirect_to @article
   end
+  def edit_article
+  end
+  def update_article
+    @article = Article.arcfind(params[:article][:archash].downcase)
+    unless @article.nil?
+      @article.update firewall_edit_article_params
+      @article.makeuparc
+      @article.update({:arctitle=>@article.arctitle,:arcauthor=>@article.arcauthor,:arccontent=>@article.arccontent})
+    else
+      raise 'BadArticleHash'
+    end
+    redirect_to @article
+  end
   private
   def article_url(arc)
     return arc.archash
+  end
+  def firewall_edit_article_params
+    unless ["db.prose","db.novel","db.poetry","db.drama"].include? params[:article][:arctype]
+      raise 'BadArticleType'
+    end
+    return params.require(:article).permit(:arctitle,:arcauthor,:arctype,:arccontent)
   end
   def firewall_create_article_params
     return params.require(:article).permit(:arctitle,:arcauthor,:arctype,:arccontent)
   end
   def firewall_article(article)
-    unless["db.unsessioned",
-           "db.tanyoulunjin",
-           "db.fushengsanji",
-           "db.suosiwuxie",
-           "db.shoubushijuan",
-           "db.qingchunshiyi",
-           "db.qianzhendichang"].include? article.arctype
+    unless ["db.prose","db.novel","db.poetry","db.drama"].include? article.arctype
       raise 'BadArticleType'
     end
     return article

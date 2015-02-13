@@ -1,0 +1,4 @@
+<h1><%=@article.arctitle%> <small><%=@article.arcauthor%></small></h1>
+<%@article.arccontent.each_line do |w|%>
+	<p><%=w%></p>
+<% end %>
