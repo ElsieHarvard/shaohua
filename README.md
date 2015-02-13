@@ -3,10 +3,10 @@
 <small>这里是北京十二中韶华文学社网站的源代码</small>
 </p>
 <h3>Version-Info</h3>
-<p><b>current:</b>&nbsp;4.2.0<br/>
+<p><b>current:</b>&nbsp;4.2.1<br/>
 <b>&nbsp;&nbsp;status:</b>&nbsp;Close Type Developing<br/>
 <b>&nbsp;&nbsp;&nbsp;&nbsp;build:</b>&nbsp;UNABLE</p>
-<p><b>当前版本：</b>4.2.0<br/>
+<p><b>当前版本：</b>4.2.1<br/>
 <b>代码状态：</b>封闭开发中<br/>
 <b>正常运行：</b>无内容</p>
 <p><b>Info:</b> Your are not recommend to clone for now.</p>
