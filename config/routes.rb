@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   # Homepage of the Website
-  get 'web_shell/index'
+  # get 'web_shell/index'
+  
+  # Aboutpage of the Website
+  get 'about', to: 'web_shell#about'
 
   # Articles
   # Show Authors article
