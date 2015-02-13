@@ -1,3 +1,4 @@
+<% title '新建文章 - '%>
 <%= form_tag({:controller=>"articles",:action=>"create_article"},{:method=>"post",:multipart=>"true",:onkeydown=>"if(event.ctrlKey&&event.keyCode==13)this.submit()"}) do %>
     <div class="input-group">
         <span class="input-group-addon chinese">文章标题</span>
@@ -10,13 +11,13 @@
     <div class="input-group">
         <span class="input-group-addon chinese">文章分类</span>
         <%= select "article","arctype",{
-                                        "未分类"=>"0.db.unsessioned",
-                                        "谈友论今（议论类）"=>"1.db.tanyoulunjin",
-                                        "浮生散记（记叙类）"=>"2.db.fushengsanji",
-                                        "所思无邪（小说类）"=>"3.db.suosiwuxie",
-                                        "手不释卷（读后感）"=>"4.db.shoubushijuan",
-                                        "清纯拾遗（散文类）"=>"5.db.qingchunshiyi",
-                                        "浅戡低唱（诗歌类）"=>"6.db.qianzhendichang"
+                                        "未分类"=>"db.unsessioned",
+                                        "谈友论今（议论类）"=>"db.tanyoulunjin",
+                                        "浮生散记（记叙类）"=>"db.fushengsanji",
+                                        "所思无邪（小说类）"=>"db.suosiwuxie",
+                                        "手不释卷（读后感）"=>"db.shoubushijuan",
+                                        "清纯拾遗（散文类）"=>"db.qingchunshiyi",
+                                        "浅戡低唱（诗歌类）"=>"db.qianzhendichang"
                                                                                 },{},{:class=>"form-control chinese"}%>
     </div>
     <div class="input-group">

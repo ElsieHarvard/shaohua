@@ -1,8 +1,0 @@
-@font-face { 
-  font-family: 'chinese';
-  src: url('/fonts/NotoSansHans-Light.otf'); 
-} 
-
-.chinese {
-  font-family: 'Noto Sans S Chinese Light','Noto Sans S Chinese','黑体','Microsoft YaHei','chinese';
-}

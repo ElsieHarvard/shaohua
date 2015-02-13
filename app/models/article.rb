@@ -3,7 +3,10 @@ class Article < ActiveRecord::Base
 		string_remove_space self.arctitle
 		string_remove_space self.arcauthor
 		string_remove_space self.arccontent
-		string_fix_type_arc self.arctype
+		write_attribute :archash,Digest::SHA1.hexdigest(self.arctitle+self.arcauthor+self.arccontent)
+	end
+	def self.arcfind(hsh)
+		return self.find_by archash: hsh
 	end
 	private
 	def string_remove_space(src)
@@ -16,8 +19,5 @@ class Article < ActiveRecord::Base
 		src.gsub!(/\s*\r\n\s*/,"\r\n")
 		src.gsub!('<','&lt;')
 		src.gsub!('>','&gt;')
-	end
-	def string_fix_type_arc(src)
-		
 	end
 end
