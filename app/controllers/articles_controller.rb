@@ -6,12 +6,22 @@ class ArticlesController < ApplicationController
   end
   def show_article
     if ["prose","novel","poetry","drama"].include? params[:hash]
-      raise params
-    end
-    if /\h{39}/.match params[:hash]
+      render :template=>'articles/show_article_list',
+             :locals=>{:title=>{"prose"=>"散文类","novel"=>"小说类","poetry"=>"诗歌类","drama"=>"戏剧类"}[params[:hash]],
+                       :list=>Article.where(arctype: 'db.'+params[:hash])}
+    elsif /\h{39}/.match params[:hash]
       @article = Article.arcfind(params[:hash].downcase)
       # render plain: @article.inspect # debug
+    else
+      raise 'BadArticleHash'
     end
+  end
+  def show_author
+    if /\h{39}/.match params[:hash]
+      render plain: params.inspect # debug
+    else
+      raise 'BadArticleHash'
+    end      
   end
   def create_article
     @article = firewall_article(Article.new(firewall_create_article_params))

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'web_shell/index'
 
   # Articles
+  # Show Authors article
+  get 'article/author/:hash', to: 'articles#show_author'
   # New Article
   get 'article/new', to: 'articles#new_article'
   # Create Article
