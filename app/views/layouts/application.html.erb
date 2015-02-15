@@ -24,9 +24,13 @@
             </ul>
         </header>
 <%=render :template=>'web_global/mainsite_navigator'%>
-        <main class="cd-main-content">
+        <% if @homepage %>
+            <div class="jumbotron non-margin-bottom non-padding cd-main-content cd-head-fix">
+                <img alt="shaohua" src="<%= yield :web_local_head_img_src%>" id="toc">
+            </div>
+        <% end %>
+        <main class="cd-main-content chine">
             <div class="cd-overlay"></div>
-            <p>&nbsp;</p>
             <%= yield %>
         </main>
         <a href="#0" class="cd-back-top">Top</a>
@@ -37,6 +41,8 @@
         <script src="/js/jquery.mobile.custom.min.js"></script>
         <script src="/js/modernizr.js"></script>
         <script src="/js/backtotop.js"></script>
+        <script src="/js/jquery.mixitup.min.js"></script>
+        <script src="/js/velocity.min.js"></script>
         <script src="/js/main.js"></script>
         <script src="/js/login.js"></script>
         <link href="/css/bootstrap.css" rel="stylesheet">

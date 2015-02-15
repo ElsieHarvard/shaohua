@@ -1,5 +1,8 @@
 <% title '文章一览 - '%>
-<% ["db.prose","db.novel","db.poetry","db.drama"].each do |type| %>
-	<%typer = {"db.prose"=>"散文类","db.novel"=>"小说类","db.poetry"=>"诗歌类","db.drama"=>"戏剧类"}[type]%>
-    <%=render :template=>'articles/show_article_list', :locals => {:title=>typer,:list=>Article.where(arctype: type)}%>
-<% end %>
+<p>&nbsp;</p>
+<div class="cd-cont">
+    <% ["db.prose","db.novel","db.poetry","db.drama"].each do |type| %>
+        <%typer = {"db.prose"=>"散文类","db.novel"=>"小说类","db.poetry"=>"诗歌类","db.drama"=>"戏剧类"}[type]%>
+        <%=render :template=>'articles/show_article_list', :locals => {:title=>typer,:list=>Article.where(arctype: type)}%>
+    <% end %>
+</div>
