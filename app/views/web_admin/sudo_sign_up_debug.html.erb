@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1>Super User Do Sign Up Debug <small>web_admin#sudo_sign_up_debug</small></h1>
+</div>
+<%= form_tag({:controller=>"web_admin",:action=>"sudo_create_user_debug"},{:method=>"get",:multipart=>"true"}) do %>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><b>username</b></span>
+      <%= text_field "usrinfo","usrname", :class=>"form-control", :id=>"inputUserName", :placeholder=>"usrinfo[usrname]"%>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><b>password</b></span>
+      <%= text_field "usrinfo","usrpassword", :type=>"password",:class=>"form-control", :id=>"inputPassword", :placeholder=>"usrinfo[usrpassword]"%>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><b>usertype</b></span>
+      <%= text_field "usrinfo","usrtype", :class=>"form-control", :id=>"inputUserType", :placeholder=>"usrinfo[usrtype]"%>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+<% end %>

@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Super User Do Create User Debug <small>web_admin#sudo_create_user_debug</small></h1>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Parameters</h3>
+  </div>
+  <div class="panel-body">
+    <%= params.inspect %>
+  </div>
+</div>
+<% if (@alert rescue nil)%>
+<div class="alert alert-danger" role="alert">
+  <%=@alert%>
+</div>
+<% end %>
+<div class="well">
+	<%= @account.inspect %>
+</div>
