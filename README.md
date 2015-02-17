@@ -13,7 +13,7 @@
 <p><b>提示：</b>我们不建议您现在复制代码</p>
 <h3>License</h3>
 <p><b>ATTENTION:</b><br>
-<a href="https://github.com/bj12shaohua/bj12shaohua.github.io/LICENSE">This program includes a lot of HTML compments which has already modified for shaohua. <b>WE RECOMMEND YOU NOT TO USE THE HTML COMPMENTS YOU GET IN THIS PROGRAM unless you have already got the origin verison of them with their own license.</b> Click here for details.</a></p>
+<a href="https://github.com/bj12shaohua/bj12shaohua.github.io/blob/master/LICENSE">This program includes a lot of HTML compments which has already modified for shaohua. <b>WE RECOMMEND YOU NOT TO USE THE HTML COMPMENTS YOU GET IN THIS PROGRAM unless you have already got the origin verison of them with their own license.</b> Click here for details.</a></p>
 <p><b>Articles of shaohua are published under: </b><a href="http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">Creative Commons<br/>Attribution-NonCommercial-NoDerivatives 4.0 International</a></p>
 <p><b>Codes of shaohua are published under: </b><a href="http://www.gnu.org/copyleft/gpl.html">GNU<br/>
 General Public License Version 3</a></p>
