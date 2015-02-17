@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212070832) do
+ActiveRecord::Schema.define(version: 20150217114822) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "arctitle"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20150212070832) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "archash"
+  end
+
+  create_table "web_accounts", force: :cascade do |t|
+    t.string   "usrname"
+    t.string   "usrpasswordhash"
+    t.string   "usrtype"
+    t.string   "usrhash"
+    t.text     "usrpubkey"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_salt"
   end
 
 end

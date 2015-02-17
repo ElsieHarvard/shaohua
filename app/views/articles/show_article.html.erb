@@ -1,8 +1,19 @@
 <p>&nbsp;</p>
-<div class="cd-cont arc-indent">
-    <h1><%=@article.arctitle%> <small><%=@article.arcauthor%></small></h1>
-    <%@article.arccontent.each_line do |w|%>
-        <p><%=w%></p>
-    <% end %>
+<%title @article.arctitle+' - '%>
+<div class="container2">
+    <div class="arc-indent">
+        <div class="page-header">
+            <h1><%=@article.arctitle%> <small>——<%=@article.arcauthor%></small></h1>
+        </div>
+        <div class="col-md-8">
+            <%@article.arccontent.each_line do |w|%>
+                <p><%=w%></p>
+            <% end %>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail">
+            
+            </div>
+        </div>
     </div>
 </div>

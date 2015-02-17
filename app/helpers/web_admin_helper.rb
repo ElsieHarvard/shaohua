@@ -1,0 +1,2 @@
+module WebAdminHelper
+end

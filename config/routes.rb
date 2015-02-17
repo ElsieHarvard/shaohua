@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Homepage of the Website
-  # get 'web_shell/index'
+  # get 'web_shell/index'#!DEBUG-ONLY!#
   
   # Aboutpage of the Website
   get 'about', to: 'web_shell#about'
@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   get 'article/:hash', to: 'articles#show_article'
   # Show Article List
   get 'article', to: 'articles#show_all_article'
+
+  # Login
+  post 'login', to: 'web_global#usrlogin'
+  # Signup
+  get 'debugadmin/signup',to: 'web_admin#sudo_sign_up_debug' #!DEBUG-ONLY!#
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

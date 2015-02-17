@@ -7,8 +7,8 @@ class ArticlesController < ApplicationController
   def show_article
     if ["prose","novel","poetry","drama"].include? params[:hash]
       render :template=>'articles/show_article_list',
-             :locals=>{:title=>{"prose"=>"散文类","novel"=>"小说类","poetry"=>"诗歌类","drama"=>"戏剧类"}[params[:hash]],
-                       :list=>Article.where(arctype: 'db.'+params[:hash])}
+             :locals=>{:hctitle=>{"prose"=>"散文类","novel"=>"小说类","poetry"=>"诗歌类","drama"=>"戏剧类"}[params[:hash]],
+                       :list=>Article.where(arctype: 'db.'+params[:hash]),:pagetit=>true}
     elsif /\h{39}/.match params[:hash]
       @article = Article.arcfind(params[:hash].downcase)
       # render plain: @article.inspect # debug
