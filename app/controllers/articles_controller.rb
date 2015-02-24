@@ -10,8 +10,14 @@ class ArticlesController < ApplicationController
              :locals=>{:hctitle=>{"prose"=>"散文类","novel"=>"小说类","poetry"=>"诗歌类","drama"=>"戏剧类"}[params[:hash]],
                        :list=>Article.where(arctype: 'db.'+params[:hash]),:pagetit=>true}
     elsif /\h{39}/.match params[:hash]
-      @article = Article.arcfind(params[:hash].downcase)
-      # render plain: @article.inspect # debug
+      if Article.exists?(:archash=>params[:hash].downcase)
+        @article = Article.arcfind(params[:hash].downcase)
+        ana=Analysis.find_by(arcid:@article.id)
+        ana.update(:arcview=>ana.arcview+1)
+        # render plain: @article.inspect # debug
+      else
+        raise404
+      end
     else
       raise 'BadArticleHash'
     end
@@ -31,6 +37,7 @@ class ArticlesController < ApplicationController
       @article = arc
     else
       @article.save
+      Analysis.new(:arcid=>@article.id,:arcview=>0,:arctag=>'',:arctype=>@article.arctype).save
     end
     redirect_to @article
   end
@@ -42,6 +49,7 @@ class ArticlesController < ApplicationController
       @article.update firewall_edit_article_params
       @article.makeuparc
       @article.update({:arctitle=>@article.arctitle,:arcauthor=>@article.arcauthor,:arccontent=>@article.arccontent})
+      Analysis.find_by(arcid:@article.arcid).update(arctype:@article.arctype)
     else
       raise 'BadArticleHash'
     end

@@ -16,18 +16,9 @@
 <div class="container2">
     <section class="cd-gallery lh16">
         <ul class="non-padding-left non-margin-bottom">
-            <li class="mix cd-item db-prose"></li>
-            <li class="mix cd-item db-novel"></li>
-            <li class="mix cd-item db-prose"></li>
-            <li class="mix cd-item db-novel"></li>
-            <li class="mix cd-item db-novel"></li>
-            <li class="mix cd-item db-novel"></li>
-            <li class="mix cd-item db-prose"></li>
-            <li class="mix cd-item db-novel"></li>
-            <li class="mix cd-item db-novel"></li>
-            <li class="mix cd-item db-novel"></li>
-            <li class="mix cd-item db-prose"></li>
-            <li class="mix cd-item db-novel"></li>
+            <% Analysis.toparticle(16).each do |arc| %>
+                <li class="mix cd-item db.<%=arc.arctype%>"><%=arc.arctitle%></li>
+            <% end %>
             <li class="gap"></li>
             <li class="gap"></li>
             <li class="gap"></li>

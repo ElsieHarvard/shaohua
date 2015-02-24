@@ -15,4 +15,7 @@ module ApplicationHelper
       return 'web_global/login'
     end
   end
+  def raise404
+    
+  end
 end

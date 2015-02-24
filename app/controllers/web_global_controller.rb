@@ -10,6 +10,7 @@ class WebGlobalController < ApplicationController
       psh=usr.usrpasswordhash
       hsh=[OpenSSL::PKCS5.pbkdf2_hmac(pas,slt,itr,512,OpenSSL::Digest::SHA512.new)].pack('m')
       if psh == hsh
+        cookies.signed[:webuser]=usr.usrhash
         render plain: 'true'
       else
         render plain: 'false'
