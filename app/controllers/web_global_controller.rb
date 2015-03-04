@@ -1,7 +1,7 @@
 class WebGlobalController < ApplicationController
   def mainsite_navigator
   end
-  def usrlogin # Not Safe
+  def usrlogin # Very Unsafe
     usr=WebAccount.find_by(usrname: firewall(params[:usrinfo][:usrname]))
     if usr
       pas=firewall(params[:usrinfo][:usrpassword])

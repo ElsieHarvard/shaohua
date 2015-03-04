@@ -1,14 +1,14 @@
 @font-face { 
   font-family: 'chinese';
-  src: url('/fonts/NotoSansHans-Regular.otf'); 
+  src: 'Noto Sans S Chinese Light','Noto Sans S Chinese','STHeiti','STXihei','Simhei','Microsoft YaHei',url('/fonts/NotoSansHans-Regular.otf'); 
 } 
 
 .chinese {
-  font-family: 'Noto Sans S Chinese Light','Noto Sans S Chinese','STHeiti','华文细黑','黑体','Microsoft YaHei','chinese';
+  font-family: 'chinese';
 }
 
 .arc-indent {
-  font-family: 'Noto Sans S Chinese Light','Noto Sans S Chinese','STHeiti','华文细黑','黑体','Microsoft YaHei','chinese';
+  font-family: 'chinese';
   text-indent: 2em;
 }
 
@@ -71,4 +71,38 @@
   .navlab{
     color: #2e3233;
   }
+}
+.cd-cover {
+  background: #FFFFFF;
+  padding: 2em;
+  padding-top: 8em;
+  padding-bottom: 4em;
+}
+.cd-cover .cov-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 5em;
+}
+.cd-cover .cov-author {
+  text-align: right;
+  margin-top: 0.5em;
+  margin-right: 1.5em;
+  margin-bottom: 0;
+}
+.black-font {
+  color: #000000;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-primary-nav .cd-secondary-nav ul {
+    padding-left: 2px;
+  }
+}
+
+.footer {
+  background: #FFFFFF;
+  padding: 2em;
+  border-top-color: rgb(221, 221, 221);
+  border-top-style: solid;
+  border-top-width: 1px; 
 }

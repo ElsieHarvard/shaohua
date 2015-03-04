@@ -281,6 +281,7 @@ xgallery
   margin-bottom: 1.6em;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   display: none;
+  width: 100%;
 }
 .cd-gallery li.gap {
   /* used in combination with text-align: justify to align gallery elements */
@@ -296,7 +297,7 @@ xgallery
   display: none;
   text-align: center;
 }
-@media only screen and (min-width: 240px) {
+@media only screen and (min-width: 480px) {
   .cd-gallery {
     padding: 40px 3%;
   }
@@ -313,7 +314,7 @@ xgallery
     margin-bottom: 2em;
   }
 }
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 1170px) {
   .cd-gallery {
     padding: 50px 2%;
     float: right;
@@ -1107,30 +1108,7 @@ Main components
   background-position: center center;
   background-size: 40px 40px;
 }
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-1::before {
-  background-image: url("../img/line-icon-1.svg");
-}
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-2::before {
-  background-image: url("../img/line-icon-2.svg");
-}
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-3::before {
-  background-image: url("../img/line-icon-3.svg");
-}
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-4::before {
-  background-image: url("../img/line-icon-4.svg");
-}
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-5::before {
-  background-image: url("../img/line-icon-5.svg");
-}
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-6::before {
-  background-image: url("../img/line-icon-6.svg");
-}
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-7::before {
-  background-image: url("../img/line-icon-7.svg");
-}
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-8::before {
-  background-image: url("../img/line-icon-8.svg");
-}
+
 @media only screen and (max-width: 1169px) {
   .cd-primary-nav {
     /* by default .cd-primary-nav is hidden - trick for iOS devices where you can see the navigation if you pull down */

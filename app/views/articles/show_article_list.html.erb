@@ -1,4 +1,8 @@
 <%title hctitle+' - ' if (pagetit rescue nil)%>
+<% if (pagetit rescue nil) %>
+<p>&nbsp;</p>
+<div class="cd-cont">
+<% end %>
 <div class="panel panel-default">
     <div class="panel-heading"><h3><%=hctitle%></h3></div>
     <div class="panel-body">
@@ -7,11 +11,14 @@
             <tbody>
                 <%list.each do|w|%>
                     <tr>
-                        <td><%=link_to w.arctitle,'article/'+w.archash%></td>
-                        <td><%=link_to w.arcauthor,'article/author/'+mkhsh(w.arcauthor)%></td>
+                        <td><%=link_to w.arctitle,'/article/'+w.archash%></td>
+                        <td><%=link_to w.arcauthor,'/article/author/'+mkhsh(w.arcauthor)%></td>
                     </tr>
                 <% end %>
             </tbody>
         </table>
     </div>
 </div>
+<% if (pagetit rescue nil) %>
+</div>
+<% end %>

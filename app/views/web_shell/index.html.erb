@@ -1,4 +1,7 @@
 <% web_local_head_img_src '/img/midnight.jpg'%>
+<!--<div>
+    <img src="img/shaohuaisback.png">
+</div>-->
 <div class="cd-tab-filter-wrapper">
     <div class="cd-tab-filter">
         <ul class="cd-filters">
@@ -17,7 +20,7 @@
     <section class="cd-gallery lh16">
         <ul class="non-padding-left non-margin-bottom">
             <% Analysis.toparticle(16).each do |arc| %>
-                <li class="mix cd-item db.<%=arc.arctype%>"><%=arc.arctitle%></li>
+                <li class="mix cd-item db-<%=arc.arctype.gsub('db.','')%> <%=arc.arctitle%> <%=arc.arcauthor%>"><%=mkcover(arc)%></li>
             <% end %>
             <li class="gap"></li>
             <li class="gap"></li>

@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
       @article.update firewall_edit_article_params
       @article.makeuparc
       @article.update({:arctitle=>@article.arctitle,:arcauthor=>@article.arcauthor,:arccontent=>@article.arccontent})
-      Analysis.find_by(arcid:@article.arcid).update(arctype:@article.arctype)
+      Analysis.find_by(arcid:@article.id).update(arctype:@article.arctype)
     else
       raise 'BadArticleHash'
     end

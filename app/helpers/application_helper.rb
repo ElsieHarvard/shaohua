@@ -9,10 +9,10 @@ module ApplicationHelper
     content_for(:web_local_head_img_src){src}
   end
   def navlogin
-    if cookies.signed[:loginhsh]=='true' && login_check
-      return 'web_global/user_account'
+    if (usracc=WebAccount.find_by(usrhash:cookies.signed[:webuser]) rescue nil)
+      return 'web_global/user_account',usracc
     else
-      return 'web_global/login'
+      return 'web_global/login',nil
     end
   end
   def raise404
