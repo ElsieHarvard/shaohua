@@ -3,7 +3,7 @@
   src: 'Noto Sans S Chinese Light','Noto Sans S Chinese','STHeiti','STXihei','Simhei','Microsoft YaHei',url('/fonts/NotoSansHans-Regular.otf'); 
 } 
 
-.chinese {
+.chinese, .chine {
   font-family: 'chinese';
 }
 
