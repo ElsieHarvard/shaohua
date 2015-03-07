@@ -4,11 +4,11 @@
 } 
 
 .chinese, .chine {
-  font-family: 'chinese';
+  font-family: 'Noto Sans S Chinese Light','Noto Sans S Chinese','STHeiti','STXihei','Simhei','Microsoft YaHei','chinese';
 }
 
 .arc-indent {
-  font-family: 'chinese';
+  font-family: 'Noto Sans S Chinese Light','Noto Sans S Chinese','STHeiti','STXihei','Simhei','Microsoft YaHei','chinese';
   text-indent: 2em;
 }
 
