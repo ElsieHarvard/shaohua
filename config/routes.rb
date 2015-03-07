@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   # Show Article List
   get 'article', to: 'articles#show_all_article'
 
+  # 
+
   # Login
   post 'login', to: 'web_global#usrlogin'
   # Signup-Debug
