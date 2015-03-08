@@ -4,17 +4,17 @@
 } 
 
 .chinese, .chine {
-  font-family: "Noto Sans S Chinese Light","Noto Sans S Chinese","Microsoft YaHei","STHeiti","STXihei","SimHei","chinese";
+  font-family: "Noto Sans S Chinese Light","Noto Sans S Chinese","Microsoft YaHei","STHeiti","STXihei","SimHei","Droid Sans","chinese";
 }
 
 .arc-indent {
-  font-family: "Noto Sans S Chinese Light","Noto Sans S Chinese","Microsoft YaHei","STHeiti","STXihei","SimHei","chinese";
+  font-family: "Noto Sans S Chinese Light","Noto Sans S Chinese","Microsoft YaHei","STHeiti","STXihei","SimHei","Droid Sans","chinese";
   text-indent: 2em;
 }
 
 .cd-main-content {
   background: #fafafa;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   z-index: 2;
 }
 .cd-cont {
@@ -106,3 +106,8 @@
   border-top-style: solid;
   border-top-width: 1px; 
 }
+
+.paddingright2em {
+  padding-right: 2em;
+}
+

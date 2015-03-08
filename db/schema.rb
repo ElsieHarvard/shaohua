@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224144554) do
+ActiveRecord::Schema.define(version: 20150308143318) do
 
   create_table "analyses", force: :cascade do |t|
     t.integer  "arcid"
@@ -30,6 +30,32 @@ ActiveRecord::Schema.define(version: 20150224144554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "archash"
+  end
+
+  create_table "periodical_articles", force: :cascade do |t|
+    t.string   "arcpicture"
+    t.string   "arctitle"
+    t.string   "arcpreauthor"
+    t.string   "arcauthor"
+    t.integer  "arcnumber"
+    t.text     "arcbeforecontent"
+    t.string   "arcattrbeforecontent"
+    t.text     "arccontent"
+    t.string   "arcattraftercontent"
+    t.text     "arcaftercontent"
+    t.string   "archash"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "prdhash"
+  end
+
+  create_table "periodicals", force: :cascade do |t|
+    t.string   "prdtitle"
+    t.string   "prdinfo"
+    t.text     "prdpages"
+    t.string   "prdhash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "web_accounts", force: :cascade do |t|

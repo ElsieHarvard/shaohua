@@ -1,3 +1,4 @@
+<% unless (@periodical rescue nil)%>
 <p>&nbsp;</p>
 <%title @article.arctitle+' - '%>
 <div class="container2">
@@ -17,3 +18,34 @@
         </div>
     </div>
 </div>
+<% else %>
+<div class="cd-perio-back">
+    <div class="cd-perio">
+        <div class="cd-perio-text">
+            <img src="/periodical/img/tst1.jpg">
+            <div class="page-header">
+                <h1 class="text-center"><%=@article.arctitle%></h1>
+                <p class="text-right cd-perio-author"><%=@article.arcpreauthor%><%=@article.arcauthor%></p>
+            </div>
+            <% unless @article.arcbeforecontent.blank?%>
+                <%@article.arcbeforecontent.each_line do |w|%>
+                    <p><%=w%></p>
+                <% end %>
+                <p class="text-right paddingright2em"><%=@article.arcattrbeforecontent%></p>
+            <% end %>
+            <p></p>
+            <%@article.arccontent.each_line do |w|%>
+                <p><%=w%></p>
+            <% end %>
+            <% unless @article.arcaftercontent.blank?%>
+                <p>&nbsp;</p>
+                <p class="no-text-indent halflinemargin"><%=@article.arcattraftercontent%></p>
+                <%@article.arcaftercontent.each_line do |w|%>
+                    <p><%=w%></p>
+                <% end %>
+            <% end %>
+            <p>&nbsp;</p>
+        </div>
+    </div>
+</div>
+<% end %>

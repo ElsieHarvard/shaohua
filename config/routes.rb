@@ -22,7 +22,16 @@ Rails.application.routes.draw do
   # Show Article List
   get 'article', to: 'articles#show_all_article'
 
-  # 
+  # Manage Periodicals
+  # New Article
+  get 'periodical/article/new',to: 'articles#advanced_new_article'
+  # Create Article
+  post 'periodical/article/create',to: 'articles#create_advanced_new_article'
+  # View Periodicals
+  # Show Periodical
+  get 'periodical/:hash',to: 'periodicals#show_periodical'
+  # Show Periodical List
+  get 'periodical',to: 'periodicals#show_all_periodical'
 
   # Login
   post 'login', to: 'web_global#usrlogin'

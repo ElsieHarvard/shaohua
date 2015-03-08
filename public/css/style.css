@@ -76,7 +76,7 @@ Main Components
 
 .cd-main-content {
   position: relative;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
 }
 .cd-main-content:after {
   content: "";
@@ -718,7 +718,7 @@ Main components
 
 .cd-main-content {
   background: #e2e3df;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   z-index: 2;
 }
 

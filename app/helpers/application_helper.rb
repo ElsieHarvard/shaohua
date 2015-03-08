@@ -15,9 +15,6 @@ module ApplicationHelper
       return 'web_global/login',nil
     end
   end
-  def raise404
-    
-  end
   def usrlogin
     return (WebAccount.find_by(usrhash:cookies.signed[:webuser]) rescue nil)
   end

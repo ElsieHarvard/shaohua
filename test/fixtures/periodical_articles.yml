@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  arcpicture: MyString
+  arctitle: MyString
+  arcpreauthor: MyString
+  arcauthor: MyString
+  arcnumber: 1
+  arcbeforecontent: MyText
+  arcattrbeforecontent: MyString
+  arccontent: MyText
+  arcattraftercontent: MyString
+  arcaftercontent: MyText
+  archash: MyString
+
+two:
+  arcpicture: MyString
+  arctitle: MyString
+  arcpreauthor: MyString
+  arcauthor: MyString
+  arcnumber: 1
+  arcbeforecontent: MyText
+  arcattrbeforecontent: MyString
+  arccontent: MyText
+  arcattraftercontent: MyString
+  arcaftercontent: MyText
+  archash: MyString

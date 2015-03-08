@@ -3,12 +3,44 @@ class ArticlesController < ApplicationController
     @articles=Article.all
   end
   def new_article
+    need_login
+  end
+  def advanced_new_article
+    need_login
+  end
+  def create_advanced_new_article
+    need_login
+    picmime=File.extname(params[:article][:arcpicture].tempfile)
+    arc=PeriodicalArticle.new params.require(:article).permit(:arctitle,:arcpreauthor,:arcauthor,:arcnumber,
+      :arcbeforecontent,:arcattrbeforecontent,:arccontent,:arcattraftercontent,:arcaftercontent)
+    pic=File.open(params[:article][:arcpicture].tempfile,'rb'){|w|w.read}
+    arc.arcphsh pic
+    arc.mkhsh
+    unless PeriodicalArticle.exists?(archash:arc.archash)
+      arc.save
+    else
+      arc=PeriodicalArticle.find_by(archash:arc.archash)
+    end
+    File.open("./public/periodical/img/"+arc.archash+picmime, "wb"){|f|
+      f.write pic}
+    #render plain:arc.inspect+"\n"+params.inspect
+    redirect_to arc
+  end
+  def advanced_show_article
   end
   def show_article
     if ["prose","novel","poetry","drama"].include? params[:hash]
       render :template=>'articles/show_article_list',
              :locals=>{:hctitle=>{"prose"=>"散文类","novel"=>"小说类","poetry"=>"诗歌类","drama"=>"戏剧类"}[params[:hash]],
                        :list=>Article.where(arctype: 'db.'+params[:hash]),:pagetit=>true}
+    elsif /\h{128}/.match params[:hash]
+      if PeriodicalArticle.exists?(:archash=>params[:hash].downcase)
+        @article = PeriodicalArticle.find_by(archash:params[:hash].downcase)
+        @periodical=true
+        # render plain: @article.inspect # debug
+      else
+        raise404
+      end
     elsif /\h{39}/.match params[:hash]
       if Article.exists?(:archash=>params[:hash].downcase)
         @article = Article.arcfind(params[:hash].downcase)
@@ -30,6 +62,7 @@ class ArticlesController < ApplicationController
     end      
   end
   def create_article
+  	need_login
     @article = firewall_article(Article.new(firewall_create_article_params))
     @article.makeuparc
     arc = Article.arcfind(@article.archash)
@@ -42,10 +75,12 @@ class ArticlesController < ApplicationController
     redirect_to @article
   end
   def edit_article
+  	need_login
   end
   def update_article
     @article = Article.arcfind(params[:article][:archash].downcase)
     unless @article.nil?
+      need_login(@article.arcauthor)
       @article.update firewall_edit_article_params
       @article.makeuparc
       @article.update({:arctitle=>@article.arctitle,:arcauthor=>@article.arcauthor,:arccontent=>@article.arccontent})
@@ -56,6 +91,9 @@ class ArticlesController < ApplicationController
     redirect_to @article
   end
   private
+  def periodical_article_url(arc)
+    return arc.archash
+  end
   def article_url(arc)
     return arc.archash
   end
