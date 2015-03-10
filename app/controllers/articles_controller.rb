@@ -3,13 +3,13 @@ class ArticlesController < ApplicationController
     @articles=Article.all
   end
   def new_article
-    need_login
+    return unless need_login
   end
   def advanced_new_article
-    need_login
+    return unless need_login
   end
   def create_advanced_new_article
-    need_login
+    return unless need_login
     picmime=File.extname(params[:article][:arcpicture].tempfile)
     arc=PeriodicalArticle.new params.require(:article).permit(:arctitle,:arcpreauthor,:arcauthor,:arcnumber,
       :arcbeforecontent,:arcattrbeforecontent,:arccontent,:arcattraftercontent,:arcaftercontent)
@@ -25,8 +25,6 @@ class ArticlesController < ApplicationController
       f.write pic}
     #render plain:arc.inspect+"\n"+params.inspect
     redirect_to arc
-  end
-  def advanced_show_article
   end
   def show_article
     if ["prose","novel","poetry","drama"].include? params[:hash]
@@ -62,7 +60,7 @@ class ArticlesController < ApplicationController
     end      
   end
   def create_article
-  	need_login
+    return unless need_login
     @article = firewall_article(Article.new(firewall_create_article_params))
     @article.makeuparc
     arc = Article.arcfind(@article.archash)
@@ -75,9 +73,10 @@ class ArticlesController < ApplicationController
     redirect_to @article
   end
   def edit_article
-  	need_login
+    return unless need_login
   end
   def update_article
+    return unless need_login
     @article = Article.arcfind(params[:article][:archash].downcase)
     unless @article.nil?
       need_login(@article.arcauthor)

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'periodical/article/new',to: 'articles#advanced_new_article'
   # Create Article
   post 'periodical/article/create',to: 'articles#create_advanced_new_article'
+  # Add Periodical
+  get 'periodical/new',to: 'articles#create_periodical'
   # View Periodicals
   # Show Periodical
   get 'periodical/:hash',to: 'periodicals#show_periodical'
