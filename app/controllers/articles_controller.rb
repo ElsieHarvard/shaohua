@@ -8,6 +8,12 @@ class ArticlesController < ApplicationController
   def advanced_new_article
     return unless need_login
   end
+  def new_periodical
+    return unless need_login
+  end
+  def create_periodical
+    return unless need_login
+  end
   def create_advanced_new_article
     return unless need_login
     picmime=File.extname(params[:article][:arcpicture].tempfile)

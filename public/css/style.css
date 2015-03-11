@@ -21,7 +21,7 @@ body {
 }
 
 a.nav,small.nav {
-    color: #69aa6f;
+    color: #003f58;
 }
 a.nav:link, a.nav:focus, a.nav:visited, a.nav:hover, a.nav:active, a.nav {
   text-decoration: none;
