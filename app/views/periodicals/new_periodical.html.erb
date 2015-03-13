@@ -1,7 +1,11 @@
 <% title '新建期刊 - '%>
 <p>&nbsp;</p>
 <div class="cd-cont">
-    <%= form_tag({:controller=>"articles",:action=>"create_periodical"},{:method=>"post",:multipart=>"true",:onkeydown=>"if(event.ctrlKey&&event.keyCode==13)this.submit()"}) do %>
+    <%= form_tag({:controller=>"periodicals",:action=>"create_periodical"},{:method=>"post",:multipart=>"true",:onkeydown=>"if(event.ctrlKey&&event.keyCode==13)this.submit()"}) do %>
+        <div class="input-group">
+            <span class="input-group-addon chinese">月刊期号</span>
+            <%= text_field "periodical","prdno",:class=>"form-control chinese",:placeholder=>"PeriodicalNumber",:required=>"true"%>
+        </div>
         <div class="input-group">
             <span class="input-group-addon chinese">月刊标题</span>
             <%= text_field "periodical","prdtitle",:class=>"form-control chinese",:placeholder=>"PeriodicalTitle",:required=>"true"%>
@@ -9,6 +13,10 @@
         <div class="input-group">
             <span class="input-group-addon chinese">月刊简介</span>
             <%= text_field "periodical","prdinfo",:class=>"form-control chinese",:placeholder=>"PeriodicalInfo",:required=>"true"%>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon chinese">月刊信息</span>
+            <%= text_area "periodical","prdmsg",:class=>"form-control chinese",:placeholder=>"PeriodicalMsg",:required=>"true"%>
         </div>
         <div class="input-group">
             <span class="input-group-addon chinese">文章列表</span>

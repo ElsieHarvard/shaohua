@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308143318) do
+ActiveRecord::Schema.define(version: 20150313143948) do
 
   create_table "analyses", force: :cascade do |t|
     t.integer  "arcid"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20150308143318) do
     t.string   "prdhash"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "prdmsg"
+    t.integer  "prdno"
   end
 
   create_table "web_accounts", force: :cascade do |t|

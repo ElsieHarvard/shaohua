@@ -8,12 +8,6 @@ class ArticlesController < ApplicationController
   def advanced_new_article
     return unless need_login
   end
-  def new_periodical
-    return unless need_login
-  end
-  def create_periodical
-    return unless need_login
-  end
   def create_advanced_new_article
     return unless need_login
     picmime=File.extname(params[:article][:arcpicture].tempfile)
@@ -37,7 +31,7 @@ class ArticlesController < ApplicationController
       render :template=>'articles/show_article_list',
              :locals=>{:hctitle=>{"prose"=>"散文类","novel"=>"小说类","poetry"=>"诗歌类","drama"=>"戏剧类"}[params[:hash]],
                        :list=>Article.where(arctype: 'db.'+params[:hash]),:pagetit=>true}
-    elsif /\h{128}/.match params[:hash]
+    elsif /\h{64}/.match params[:hash]
       if PeriodicalArticle.exists?(:archash=>params[:hash].downcase)
         @article = PeriodicalArticle.find_by(archash:params[:hash].downcase)
         @periodical=true
