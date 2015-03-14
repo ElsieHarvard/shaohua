@@ -394,7 +394,7 @@ xfilter
   z-index: 3;
 }
 .no-touch .cd-filter .cd-close:hover {
-  background: rgb(125, 190, 131);
+  background: #009bd7;
 }
 .cd-filter.filter-is-visible {
   -webkit-transform: translateX(0);
@@ -450,7 +450,7 @@ xfilter
     transition: color 0.3s;
   }
   .no-touch .cd-filter-trigger:hover {
-    color: rgb(115, 180, 121);
+    color: #009bd7;
   }
   .cd-filter-trigger.filter-is-visible, .cd-filter-trigger.filter-is-visible:hover {
     color: #ffffff;
@@ -481,7 +481,7 @@ xcustom form elements
   cursor: pointer;
 }
 .no-touch .cd-filter-block h4:hover {
-  color: rgb(115, 180, 121);
+  color: #009bd7;
 }
 .cd-filter-block h4::before {
   /* arrow */
