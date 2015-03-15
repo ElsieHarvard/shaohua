@@ -3,7 +3,15 @@ class PeriodicalsController < ApplicationController
     render plain: Periodical.all.inspect # debug
   end
   def show_periodical
-    
+    if /\h{39}/.match params[:hash]
+    	if Periodical.exists?(prdhash:params[:hash])
+    		@prd=Periodical.find_by(prdhash:params[:hash])
+    	else
+    		raise404
+    	end
+    else
+    	raise 'BadPeriodicalHash'
+    end
   end
   def new_periodical
     return unless need_login
