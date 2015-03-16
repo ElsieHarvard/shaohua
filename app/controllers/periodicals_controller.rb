@@ -1,6 +1,6 @@
 class PeriodicalsController < ApplicationController
   def show_all_periodical
-    render plain: Periodical.all.inspect # debug
+    @prdlst=Periodical.all
   end
   def show_periodical
     if /\h{39}/.match params[:hash]
@@ -23,9 +23,13 @@ class PeriodicalsController < ApplicationController
     unless Periodical.exists?(prdhash:prd.prdhash)
     	prd.save
     else
-    	prd PeriodicalArticle.find_by(archash:arc.archash)
+    	prd=Periodical.find_by(prdhash:prd.prdhash)
     end
     # render plain:prd.inspect+"\n"+params.inspect
-    # redirect_to prd
+    redirect_to prd
+  end
+  private
+  def periodical_url(prd)
+    return prd.prdhash
   end
 end
