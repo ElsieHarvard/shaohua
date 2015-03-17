@@ -134,3 +134,8 @@
 .cd-primary-nav .see-all a {
   color: #003f58;
 }
+.cd-primary-nav .cd-nav-gallery .cd-nav-item h3 {
+  color: #003f58;
+  font-size: 1.25em;
+  text-align: center;
+}

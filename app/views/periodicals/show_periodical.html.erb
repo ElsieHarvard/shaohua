@@ -1,5 +1,9 @@
 <p>&nbsp;</p>
 <%title @prd.prdtitle+' - '%>
 <%=@prd.inspect%>
-<%@prd.prdpages.each do |hsh|%>
+<%@prd.prdpages.each_line do |hsh|%>
+  <%arc=getarcsh(hsh)%>
+  <ul>
+  	<a href="/article/<%=hsh%>"><%=arc.arctitle%></a>
+  </ul>
 <%end%>
