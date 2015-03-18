@@ -29,7 +29,7 @@
                         <li class="see-all"><a class="nav" href="/periodical">月刊一览</a></li>
                         <% Periodical.top(5).each do |w| %>
                             <li>
-                                <a class="cd-nav-item" href="/periodicals/<%=w.prdhash%>">
+                                <a class="cd-nav-item" href="/periodical/<%=w.prdhash%>">
                                     <img src="/periodical/covimg/<%=w.prdtitle%>.jpg" alt="<%=w.prdtitle%>">
                                     <p class="text-center"><h3><%=w.prdtitle%></h3></p>
                                 </a>
