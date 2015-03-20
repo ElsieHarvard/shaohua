@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
     return unless need_login
     picmime=File.extname(params[:article][:arcpicture].tempfile)
     arc=PeriodicalArticle.new params.require(:article).permit(:arctitle,:arcpreauthor,:arcauthor,:arcnumber,
-      :arcbeforecontent,:arcattrbeforecontent,:arccontent,:arcattraftercontent,:arcaftercontent)
+      :arcbeforecontent,:arcattrbeforecontent,:arccontent,:arcattraftercontent,:arcaftercontent,:prdhash)
     pic=File.open(params[:article][:arcpicture].tempfile,'rb'){|w|w.read}
     arc.arcphsh pic
     arc.mkhsh

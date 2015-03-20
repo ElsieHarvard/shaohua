@@ -9,6 +9,7 @@ class WebAccount < ActiveRecord::Base
 		slt=OpenSSL::Random.random_bytes(512)
 		write_attribute :password_salt,[slt].pack('m')
 		write_attribute :usrpasswordhash,[mkhsh(up,slt,ut=='admin' ? 65536 : 16384 )].pack('m')
+		write_attribute :usrhash,Digest::SHA3.hexdigest(usrname)
 		return self
 	end
 	def self.firewall(src)

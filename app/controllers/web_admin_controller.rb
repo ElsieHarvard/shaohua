@@ -9,6 +9,7 @@ class WebAdminController < ApplicationController
       @account.save
     else
       @alert='ERROR: User Already Exist'
+      @account=(WebAccount.find_by usrname: WebAccount.firewall(params[:usrinfo][:usrname])) 
     end
   end
 end
