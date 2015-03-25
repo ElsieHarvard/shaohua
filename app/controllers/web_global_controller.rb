@@ -1,7 +1,7 @@
 class WebGlobalController < ApplicationController
   def mainsite_navigator
   end
-  def usrlogin # Very Unsafe
+  def usrlogin # !!!!!! Very Unsafe !!!!!!
     usr=WebAccount.find_by(usrname: firewall(params[:usrinfo][:usrname]))
     if usr
       pas=firewall(params[:usrinfo][:usrpassword])
@@ -11,6 +11,7 @@ class WebGlobalController < ApplicationController
       hsh=[OpenSSL::PKCS5.pbkdf2_hmac(pas,slt,itr,512,OpenSSL::Digest::SHA512.new)].pack('m')
       if psh == hsh
         cookies.signed[:webuser]=usr.usrhash
+        LOGIN_LOG.info("User: "+usr.usrhash+"{"+usr.usrname+"} LogIn!\n")
         render plain: 'true'
       else
         render plain: 'false'
