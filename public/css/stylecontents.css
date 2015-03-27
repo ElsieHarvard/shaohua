@@ -73,16 +73,20 @@
   }
 }
 .cd-cover {
-  background: #FFFFFF;
+  background: rgba(255,255,255,0.6);
   padding: 2em;
   padding-top: 8em;
-  padding-bottom: 4em;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+}
+.cd-cover-li {
+  background-size: cover;
 }
 .cd-cover .cov-title {
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
-  height: 5em;
+  height: 4em;
 }
 .cd-cover .cov-author {
   text-align: right;
