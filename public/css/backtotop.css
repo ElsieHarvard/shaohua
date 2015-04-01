@@ -33,8 +33,8 @@
   opacity: .5;
 }
 .no-touch .cd-back-top:hover {
-  background-color: rgba(105, 170, 111, 0.8);
-  opacity: 1;
+  background-color: #009bd7;
+  opacity: 0.8;
 }
 @media only screen and (min-width: 768px) {
   .cd-back-top {

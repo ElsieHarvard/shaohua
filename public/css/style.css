@@ -240,7 +240,7 @@ xtab-filter
     font-size: 1.3rem;
   }
   .no-touch .cd-tab-filter a:hover {
-    color: rgb(0, 63, 88);
+    color: #009bd7;
   }
   .cd-tab-filter a.selected {
     background: transparent;
