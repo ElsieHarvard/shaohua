@@ -72,16 +72,7 @@
     color: #003f58;
   }
 }
-.cd-cover {
-  background: rgba(255,255,255,0.6);
-  padding: 2em;
-  padding-top: 8em;
-  padding-bottom: 2em;
-  margin-bottom: 2em;
-}
-.cd-cover-li {
-  background-size: cover;
-}
+
 .cd-cover .cov-title {
   text-align: center;
   margin-top: 0;
@@ -102,7 +93,12 @@
     padding-left: 2px;
   }
 }
-
+.cd-cover {
+  background: #FFFFFF;
+  padding: 2em;
+  padding-top: 8em;
+  padding-bottom: 4em;
+}
 .footer {
   background: #FFFFFF;
   padding: 2em;
@@ -142,4 +138,10 @@
   color: #003f58;
   font-size: 1.25em;
   text-align: center;
+}
+.cd-cover-2 {
+  background: rgba(255,255,255,0.6);
+}
+.cd-cover-li-2 {
+  background-size: cover;
 }
