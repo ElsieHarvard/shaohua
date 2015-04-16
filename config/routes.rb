@@ -39,6 +39,13 @@ Rails.application.routes.draw do
 
   # Login
   post 'login', to: 'web_global#usrlogin'
+  
+  # BBS
+  # Show Author
+  get 'bbs/:hash', to: 'web_global#bbs_usr'
+  # HomePage
+  get 'bbs', to: 'web_global#bbs'
+
   # Signup-Debug
   get 'debugadmin/signup',to: 'web_admin#sudo_sign_up_debug' #!DEBUG-ONLY!#
   # Create-Debug

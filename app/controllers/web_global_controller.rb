@@ -20,6 +20,18 @@ class WebGlobalController < ApplicationController
       render plain: 'false'
     end
   end
+  def bbs
+    
+  end
+  def bbs_usr
+    if /\h{39}/.match params[:hash]
+      @artc=[]
+      Article.all.each { |e| @artc.push e if Digest::SHA1.hexdigest(e.arcauthor) == params[:hash] }
+      render plain: @artc.inspect
+    else
+      raise 'BadAuthorHash'
+    end
+  end
   def publickey
     return OpenSSL::PKey::RSA.new 
   end
