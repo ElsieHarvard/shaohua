@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
       render plain: params.inspect # debug
     else
       raise 'BadArticleHash'
-    end      
+    end
   end
   def create_article
     return unless need_login

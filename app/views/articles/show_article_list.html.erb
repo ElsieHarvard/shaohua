@@ -12,7 +12,7 @@
                 <%list.each do|w|%>
                     <tr>
                         <td><%=link_to w.arctitle,'/article/'+w.archash%></td>
-                        <td><%=link_to w.arcauthor,'/article/author/'+mkhsh(w.arcauthor)%></td>
+                        <td><%=link_to w.arcauthor,'/bbs/'+mkhsh(w.arcauthor)%></td>
                     </tr>
                 <% end %>
             </tbody>
