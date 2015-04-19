@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   put 'article/update', to: 'articles#update_article'
   # Show Article
   get 'article/:hash', to: 'articles#show_article'
+  # Top An Article
+  post 'article/top', to: 'articles#top_an_article'
   # Show Article List
   get 'article', to: 'articles#show_all_article'
 

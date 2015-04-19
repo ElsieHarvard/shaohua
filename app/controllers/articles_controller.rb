@@ -42,8 +42,6 @@ class ArticlesController < ApplicationController
     elsif /\h{39}/.match params[:hash]
       if Article.exists?(:archash=>params[:hash].downcase)
         @article = Article.arcfind(params[:hash].downcase)
-        ana=Analysis.find_by(arcid:@article.id)
-        # ana.update(:arcview=>ana.arcview+1)
         # render plain: @article.inspect # debug
       else
         raise404
@@ -88,6 +86,19 @@ class ArticlesController < ApplicationController
       raise 'BadArticleHash'
     end
     redirect_to @article
+  end
+  def top_an_article
+    raise 'BadArticleHash' unless /\h{39}/.match params[:archsh]
+    return render plain: '您已经赞过啦！' if (cookies['toped'+params[:archsh]]=='1' )
+    if Article.exists?(:archash=>params[:archsh].downcase)
+      @article = Article.arcfind(params[:archsh].downcase)
+      ana=Analysis.find_by(arcid:@article.id)
+      ana.update(:arcview=>ana.arcview+1)
+      cookies['toped'+params[:archsh]]='1'
+      render plain: ana.arcview.inspect
+    else
+      raise404
+    end    
   end
   private
   def periodical_article_url(arc)
