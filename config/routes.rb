@@ -42,9 +42,9 @@ Rails.application.routes.draw do
   
   # BBS
   # Show Author
-  get 'bbs/:hash', to: 'web_global#bbs_usr'
+  get 'bbs/:hash', to: 'web_shell#bbs_usr'
   # HomePage
-  get 'bbs', to: 'web_global#bbs'
+  get 'bbs', to: 'web_shell#bbs'
 
   # Signup-Debug
   get 'debugadmin/signup',to: 'web_admin#sudo_sign_up_debug' #!DEBUG-ONLY!#

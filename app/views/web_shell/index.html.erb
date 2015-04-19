@@ -19,7 +19,7 @@
 <div class="container2">
     <section class="cd-gallery lh16">
         <ul class="non-padding-left non-margin-bottom">
-            <% Analysis.toparticle(16).each do |arc| %>
+            <% Analysis.toparticle(Article.all.size).each do |arc| %>
                 <li class="mix cd-item db-<%=arc.arctype.gsub('db.','')%> <%=arc.arctitle%> <%=arc.arcauthor%>"><%=mkcover(arc)%></li>
             <% end %>
             <li class="gap"></li>

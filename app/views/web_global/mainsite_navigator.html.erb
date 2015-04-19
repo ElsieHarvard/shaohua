@@ -30,7 +30,7 @@
                         <% Periodical.top(5).each do |w| %>
                             <li>
                                 <a class="cd-nav-item" href="/periodical/<%=w.prdhash%>">
-                                    <img src="/periodical/covimg/<%=w.prdhash%>.jpg" alt="<%=w.prdtitle%>">
+                                    <div class="pt2020nav"><img src="/periodical/cover/<%=w.prdhash%>.jpg" alt="<%=w.prdtitle%>"></div>
                                     <p class="text-center"><h3><%=w.prdtitle%></h3></p>
                                 </a>
                             </li>
@@ -41,7 +41,7 @@
                     <a class="nav pt201" href="/bbs">小径深处的花园</a>
                     <ul class="cd-secondary-nav is-hidden">
                         <li class="go-back"><a class="nav" href="#0">返回</a></li>
-                        <li class="see-all"><a class="nav" href="/bbs/home">个人空间</a></li>
+                        <li class="see-all"><a class="nav" href="/bbs/">个人空间</a></li>
                         <div class="col-lg-6"></div>
                         <div class="col-lg-6"><%=render :template=>navlogin[0],:locals=>{:usracc=>navlogin[1]}%></div>
                     </ul>

@@ -1,0 +1,25 @@
+<p>&nbsp;</p>
+<div class="bbs-cont">
+    <div class="bbs-head">
+        <h1 class="bbs-title">
+            <a title="<%=@arca%>" href="/"><%=@arca%></a>
+        </h1>
+        <ul class="bbs-nav">
+            <li>私信</li>
+            <li>归档</li>
+            <li>RSS</li>
+        </ul>
+    </div>
+    <div class="bbs-arct">
+        <% @artc.each do |w| %>
+        <div class="bbs-post bbs-post0">
+            <h2 class="bbs-arc-title"><%=w.arctitle%></h2>
+            <div class="arc-indent"><%w.arccontent.each_line do |x|%>
+                <p><%=x%></p>
+            <% end %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+<p>&nbsp;</p>

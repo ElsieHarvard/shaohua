@@ -96,8 +96,16 @@
 .cd-cover {
   background: #FFFFFF;
   padding: 2em;
+  padding-left: 4em;
+  padding-right: 4em;
   padding-top: 8em;
   padding-bottom: 4em;
+}
+@media only screen and (max-width: 320px) {
+  .cd-cover {
+    padding-left: 2.5em;
+    padding-right: 2.5em;    
+  }
 }
 .footer {
   background: #FFFFFF;
@@ -105,6 +113,8 @@
   border-top-color: rgb(221, 221, 221);
   border-top-style: solid;
   border-top-width: 1px; 
+  bottom: 0;
+  z-index: 0;
 }
 
 .paddingright2em {
@@ -115,24 +125,29 @@
   background-color: rgba(32, 32, 32, 0.7);
 }
 .cd-primary-nav .cd-secondary-nav a:hover {
-  color: #003f58;
+  color: #ffffff;
 }
-.cd-primary-nav .cd-secondary-nav > li > a {
-  color: #003f58;
-}
-.cd-primary-nav > li > a.selected {
-  color: #003f58;
-  box-shadow: inset 0 -2px 0 rgba(0, 63, 88, 0.6);
-}
-.cd-primary-nav > li > a:hover {
-  color: #009bd7;
-}
-.cd-primary-nav > li > a.selected {
-  color: #003f58;
-  box-shadow: inset 0 -2px 0 #003f58;
-}
-.cd-primary-nav .see-all a {
-  color: #003f58;
+@media only screen and (min-width: 1170px) {
+  .cd-primary-nav .cd-secondary-nav a:hover {
+    color: #003f58;
+  }
+  .cd-primary-nav .cd-secondary-nav > li > a {
+    color: #003f58;
+  }
+  .cd-primary-nav > li > a.selected {
+    color: #003f58;
+    box-shadow: inset 0 -2px 0 rgba(0, 63, 88, 0.6);
+  }
+  .cd-primary-nav > li > a:hover {
+    color: #009bd7;
+  }
+  .cd-primary-nav > li > a.selected {
+    color: #003f58;
+    box-shadow: inset 0 -2px 0 #003f58;
+  }
+  .cd-primary-nav .see-all a {
+    color: #003f58;
+  }
 }
 .cd-primary-nav .cd-nav-gallery .cd-nav-item h3 {
   color: #003f58;
@@ -144,4 +159,33 @@
 }
 .cd-cover-li-2 {
   background-size: cover;
+}
+.cd-main-content {
+
+}
+.prd-arct {
+  float: left;
+}
+.prd-arca {
+  float: right;
+}
+.pt2020nav {
+  box-shadow: 2px 0 15px rgba(102,102,102,0.2),-2px 0 15px rgba(102,102,102,0.2);
+  border: 1px solid #ededed;
+}
+@media only screen and (max-width: 1170px) {
+  .cd-primary-nav .cd-nav-gallery .cd-nav-item .pt2020nav img {
+    display: none;
+    margin-bottom: 0;
+  }
+}
+.cd-primary-nav .cd-nav-gallery .cd-nav-item .pt2020nav img {
+  margin-bottom: 0;
+}
+@media only screen and (max-width: 1170px) {
+  .cd-primary-nav .cd-nav-gallery .cd-nav-item h3 {
+    color: #ffffff;
+    text-align: left;
+    padding: 0;
+  }
 }

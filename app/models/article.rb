@@ -11,6 +11,7 @@ class Article < ActiveRecord::Base
 	private
 	def string_remove_space(src)
 		src.gsub!("\u3000",'  ')
+		src.gsub!("\u2022","\u00B7")
 		src.gsub!("\t",'    ')
 		src.gsub!("\r","\n")
 		src.gsub!(/\A\s*/,'')

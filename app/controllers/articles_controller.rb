@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
       if Article.exists?(:archash=>params[:hash].downcase)
         @article = Article.arcfind(params[:hash].downcase)
         ana=Analysis.find_by(arcid:@article.id)
-        ana.update(:arcview=>ana.arcview+1)
+        # ana.update(:arcview=>ana.arcview+1)
         # render plain: @article.inspect # debug
       else
         raise404
