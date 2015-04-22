@@ -19,9 +19,9 @@
 <div class="container2">
     <section class="cd-gallery lh16">
         <ul class="non-padding-left non-margin-bottom">
-            <% sz=Article.all.size %>
+            <% sz=Article.all.size-1 %>
             <% 16.times { %>
-                <% arc = Article.find(rand(sz))%>
+                <% arc = Article.find(rand(sz)+1)%>
                 <li class="mix cd-item db-<%=arc.arctype.gsub('db.','')%> <%=arc.arctitle%> <%=arc.arcauthor%>"><%=mkcover(arc)%></li>
             <% } %>
             <% Analysis.toparticle(16).each do |arc| %>

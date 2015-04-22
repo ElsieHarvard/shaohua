@@ -1,4 +1,13 @@
 /*
+ * Font Face
+ */
+
+@font-face { 
+  font-family: "scpol";
+  src: url("/fonts/SourceCodePro-Regular.otf");
+}
+
+/*
  * Base structure
  */
 
@@ -104,5 +113,5 @@ body {
   border-radius: 50%;
 }
 .main {
-  font-family: 'source code pro';
+  font-family: 'source code pro','scpol';
 }

@@ -42,6 +42,7 @@ class ArticlesController < ApplicationController
     elsif /\h{39}/.match params[:hash]
       if Article.exists?(:archash=>params[:hash].downcase)
         @article = Article.arcfind(params[:hash].downcase)
+        @ana=Analysis.find_by(arcid:@article.id)
         # render plain: @article.inspect # debug
       else
         raise404

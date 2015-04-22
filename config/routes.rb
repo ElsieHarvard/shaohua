@@ -49,9 +49,9 @@ Rails.application.routes.draw do
   get 'bbs', to: 'web_shell#bbs'
 
   # Signup-Debug
-  get 'debugadmin/signup',to: 'web_admin#sudo_sign_up_debug' #!DEBUG-ONLY!#
+  get 'administration/debug/signup',to: 'web_admin#sudo_sign_up_debug' #!DEBUG-ONLY!#
   # Create-Debug
-  get 'debugadmin/create',to: 'web_admin#sudo_create_user_debug' #!DEBUG-ONLY!#
+  get 'administration/debug/create',to: 'web_admin#sudo_create_user_debug' #!DEBUG-ONLY!#
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
