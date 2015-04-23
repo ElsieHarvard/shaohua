@@ -9,7 +9,7 @@
                         <% ["db.prose","db.novel","db.poetry","db.drama"].each do |type| %>
                             <li class="has-children">
                                 <a class="nav" href="/article/<%=type.gsub('db.','')%>">
-                                    <%=typee={"db.prose"=>"散文","db.novel"=>"小说","db.poetry"=>"诗歌","db.drama"=>"戏剧"}[type]%>
+                                    <%=typee={"db.prose"=>"散文","db.novel"=>"小说","db.poetry"=>"诗歌","db.drama"=>"短剧"}[type]%>
                                 </a>
                                 <ul class="is-hidden pt202">
                                     <li class="go-back"><a class="nav" href="#0">返回</a></li>

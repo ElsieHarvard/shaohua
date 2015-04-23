@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
   def show_article
     if ["prose","novel","poetry","drama"].include? params[:hash]
       render :template=>'articles/show_article_list',
-             :locals=>{:hctitle=>{"prose"=>"散文类","novel"=>"小说类","poetry"=>"诗歌类","drama"=>"戏剧类"}[params[:hash]],
+             :locals=>{:hctitle=>{"prose"=>"散文类","novel"=>"小说类","poetry"=>"诗歌类","drama"=>"短剧类"}[params[:hash]],
                        :list=>Article.where(arctype: 'db.'+params[:hash]),:pagetit=>true}
     elsif /\h{64}/.match params[:hash]
       if PeriodicalArticle.exists?(:archash=>params[:hash].downcase)

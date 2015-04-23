@@ -1,7 +1,9 @@
 class WebGlobalController < ApplicationController
+  STDADMIN="elsie"
   def mainsite_navigator
   end
   def usrlogin # !!!!!! Very Unsafe !!!!!!
+    raise 'STOP' unless firewall(params[:usrinfo][:usrname])==STDADMIN
     usr=WebAccount.find_by(usrname: firewall(params[:usrinfo][:usrname]))
     if usr
       pas=firewall(params[:usrinfo][:usrpassword])
