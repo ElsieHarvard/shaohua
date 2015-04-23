@@ -17,6 +17,7 @@ class WebAdminController < ApplicationController
   def refresh_archash
     return unless need_login 'admin'
     @weblayoutadmin=true
+    
     Article.all.each{|w|w.update :archash=>w.makeuparc}
   end
 end
