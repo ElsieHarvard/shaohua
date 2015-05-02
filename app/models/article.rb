@@ -40,9 +40,12 @@ class Article < ActiveRecord::Base
 	def self.navtop(type,num)
 		return self.where(arc_type:type).order(:arc_top).last(num).reverse
 	end
+	def arcphsh(src)
+		write_attribute :arcpicture,OpenSSL::Digest::SHA256.hexdigest(src)
+	end
 	private
 		def get_arc_hash
-			write_attribute :arc_hash,Digest::SHA1.hexdigest(arc_content)
+			write_attribute :arc_hash,OpenSSL::Digest::SHA1.hexdigest(arc_content)
 		end
 		def remove_space
 			string_remove_all_space self.arc_title
@@ -59,6 +62,7 @@ class Article < ActiveRecord::Base
 			return self
 		end
 		def string_remove_space(src)
+			return if src == nil
 			src.gsub!("\u3000",'  ')
 			src.gsub!("\u2022","\u00B7")
 			src.gsub!("\t",'    ')
@@ -70,6 +74,7 @@ class Article < ActiveRecord::Base
 			src.gsub!('>','&gt;')
 		end
 		def string_remove_all_space(src)
+			return if src == nil
 			string_remove_space src
 			src.gsub!(' ','')
 		end

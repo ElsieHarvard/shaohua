@@ -2,6 +2,10 @@
 <div class="cd-cont">
     <%= form_tag({:controller=>"articles",:action=>act},{:method=>mtd,:multipart=>"true",:onkeydown=>"if(event.ctrlKey&&event.keyCode==13)this.submit()"}) do %>
         <div class="input-group">
+            <span class="input-group-addon chinese">文章哈希</span>
+            <%= text_field "article","arc_hash",:class=>"form-control chinese",:placeholder=>"ArticleHash",:value=>@arc.arc_hash%>
+        </div>
+        <div class="input-group">
             <span class="input-group-addon chinese">文章标题</span>
             <%= text_field "article","arc_title",:class=>"form-control chinese",:placeholder=>"ArticleTitle",:value=>@arc.arc_title%>
         </div>
