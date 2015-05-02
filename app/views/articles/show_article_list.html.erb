@@ -11,8 +11,8 @@
             <tbody>
                 <%list.each do|w|%>
                     <tr>
-                        <td><%=link_to w.arctitle,'/article/'+w.archash%></td>
-                        <td><%=link_to w.arcauthor,'/bbs/'+mkhsh(w.arcauthor)%></td>
+                        <td><%=link_to w.arc_title,'/article/'+w.arc_hash%></td>
+                        <td><%=link_to w.arc_author,'/bbs/'+mkhsh(w.arc_author)%></td>
                     </tr>
                 <% end %>
             </tbody>

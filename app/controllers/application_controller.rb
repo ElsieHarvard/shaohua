@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   def need_login(cmd=nil)
-    if (WebAccount.find_by(usrhash:cookies.signed[:webuser]) rescue nil)
+    if (WebAccounts.find_by(usrhash:cookies.signed[:webuser]) rescue nil)
       return true
     else
-      render :template=>'web_global/needlogin'
+      render :template=>'web_shell/needlogin'
       return false
     end
   end
   def raise404
-    render :plain=>"", :status=>404
+    return render :template=>"web_shell/404",:status=>404
   end
 end

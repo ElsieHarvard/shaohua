@@ -1,63 +1,136 @@
 Rails.application.routes.draw do
 
-  # Homepage of the Website
-  # get 'web_shell/index'#!DEBUG-ONLY!#
-  
-  # Aboutpage of the Website
-  get 'about', to: 'web_shell#about'
+  #######################################
+  # =================================== #
+  #      Routes for shaohua 5.0.0       #
+  # =================================== #
+  # ├─ Home                             #
+  # ├─ About                            #
+  # ├─ Articles                         #
+  # ├─ Periodicals                      #
+  # ├─ Users                            #
+  # └─ Administrations                  #
+  #######################################
 
-  # Articles
-  # Show Authors article
-  get 'article/author/:hash', to: 'articles#show_author'
-  # New Article
-  get 'article/new', to: 'articles#new_article'
-  # Create Article
+  #######################################
+  # =================================== #
+  #              Home Page              #
+  # =================================== #
+  #######################################
+  root 'web_shell#global_web_homepage'
+   get 'web_shell/global_web_homepage'
+   get 'web_shell/404', to: 'web_shell#r404'
+   get 'web_shell/422', to: 'web_shell#r422'
+   get 'web_shell/500', to: 'web_shell#r500'
+
+
+  #######################################
+  # =================================== #
+  #             About Page              #
+  # =================================== #
+  #######################################
+   get 'about', to: 'web_shell#about'
+
+  #######################################
+  # =================================== #
+  #              Articles               #
+  # =================================== #
+  #######################################
+  # ----------------------------------- #
+  #            Manage Article           #
+  # ----------------------------------- #
+  # Require                 All Article #
+   get 'article', to: 'articles#show_all_article'
+  # Require                 New Article #
+   get 'article/new', to: 'articles#new_article'
+  # Require                Edit Article #
+   get 'article/edit/:hash', to: 'articles#edit_article'
+  # Require                Show Article #
+   get 'article/:hash', to: 'articles#show_article'
+  # Create                  New Article #
   post 'article/create', to: 'articles#create_article'
-  # Edit Article
-  get 'article/edit', to: 'articles#edit_article'
-  # Update Article
-  put 'article/update', to: 'articles#update_article'
-  # Show Article
-  get 'article/:hash', to: 'articles#show_article'
-  # Top An Article
+  # Update              Existed Article #
+   put 'article/update', to: 'articles#update_article'
+  # ----------------------------------- #
+  #               Top Article           #
+  # ----------------------------------- #
+  # Require Tops        Existed Article #
+   get 'article/top/:hash', to: 'articles#top_of_article'
+  # Sumbit a Top        Existed Article #
   post 'article/top', to: 'articles#top_an_article'
-  # Show Article List
-  get 'article', to: 'articles#show_all_article'
+  # ----------------------------------- #
+  #           Comment Article           #
+  # ----------------------------------- #
+  # Require Comments    Existed Article #
+   get 'article/comment/:hash', to: 'articles#top_of_article'
+  # Sumbit a Comment    Existed Article #
+  post 'article/comment', to: 'articles#top_an_article'
+  # ----------------------------------- #
+  #               Tag Article           #
+  # ----------------------------------- #
+  # Require Tags        Existed Article #
+   get 'article/tag/:hash', to: 'articles#tag_of_article'
+  # Sumbit a Tag        Existed Article #
+  post 'article/tag/comment', to: 'articles#tag_an_article'
 
-  # Manage Periodicals
-  # New Article
-  get 'periodical/article/new',to: 'articles#advanced_new_article'
-  # Create Article
-  post 'periodical/article/create',to: 'articles#create_advanced_new_article'
-  # Add Periodical
-  get 'periodical/new',to: 'periodicals#new_periodical'
-  # Create Periodical
+  #######################################
+  # =================================== #
+  #             Periodicals             #
+  # =================================== #
+  #######################################
+  # ----------------------------------- #
+  #            Manage Periodicals       #
+  # ----------------------------------- #
+  # Require                    Designer #
+   get 'periodical/design',to: 'periodicals#app_designer'
+  # Require              All Periodical #
+   get 'periodical',to: 'periodicals#show_all_periodical'
+  # Require              New Periodical #
+   get 'periodical/new',to: 'periodicals#new_periodical'
+  # Require            Edit Perdiodical #
+   get 'periodical/edit/:hash', to: 'periodicals#edit_article'
+  # Require          Existed Periodical #
+   get 'periodical/:hash',to: 'periodicals#show_periodical'
+  # Create               New Periodical #
   post 'periodical/create',to: 'periodicals#create_periodical'
-  # View Periodicals
-  # Show Periodical
-  get 'periodical/:hash',to: 'periodicals#show_periodical'
-  # Show Periodical List
-  get 'periodical',to: 'periodicals#show_all_periodical'
+  # Update           Existed Periodical #
+   put 'periodical/update', to: 'periodicals#update_article'
 
-  # Login
-  post 'login', to: 'web_global#usrlogin'
-  
-  # BBS
-  # Show Author
-  get 'bbs/:hash', to: 'web_shell#bbs_usr'
-  # HomePage
-  get 'bbs', to: 'web_shell#bbs'
+  #######################################
+  # =================================== #
+  #                Users                #
+  # =================================== #
+  #######################################
+  # ----------------------------------- #
+  #            Manage Users             #
+  # ----------------------------------- #
+  # Require                       Login #
+   get 'bbs/login', to: 'web_accounts#login_require'
+  # Require                      Signup #
+   get 'bbs/signup', to: 'web_accounts#signup_require'
+  # Sumbit                        Login #
+  post 'bbs/login', to: 'web_accounts#login_check'
+  # Sumbit                       Signup #
+  post 'bbs/signup', to: 'web_accounts#signup_do'
+  # ----------------------------------- #
+  #              Show Users             #
+  # ----------------------------------- #
+  # Require                         BBS #
+   get 'bbs', to: 'web_accounts#self_home_page'
+  # Require                Existed User #
+   get 'bbs/:hash', to: 'web_accounts#usr_home_page'
 
-  # Signup-Debug
-  get 'administration/debug/signup',to: 'web_admin#sudo_sign_up_debug' #!DEBUG-ONLY!#
-  # Create-Debug
-  get 'administration/debug/create',to: 'web_admin#sudo_create_user_debug' #!DEBUG-ONLY!#
+  #######################################
+  # =================================== #
+  #            END OF ROUTES            #
+  # =================================== #
+  #######################################
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'web_shell#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

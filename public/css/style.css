@@ -344,7 +344,7 @@ xfilter
   height: 100%;
   background: #ffffff;
   box-shadow: 4px 4px 20px transparent;
-  z-index: 2;
+  z-index: 1;
   /* Force Hardware Acceleration in WebKit */
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -429,7 +429,7 @@ xfilter
   color: transparent;
   white-space: nowrap;
   background: transparent url("../img/cd-icon-filter.svg") no-repeat center center;
-  z-index: 3;
+  z-index: 1;
 }
 .cd-filter-trigger.filter-is-visible {
   pointer-events: none;

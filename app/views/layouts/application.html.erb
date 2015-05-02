@@ -1,5 +1,5 @@
-<%unless (@weblayoutadmin rescue nil) %>
 <!DOCTYPE html>
+<%unless (@weblayoutadmin rescue nil) %>
 <html lang="zh-cn">
     <head>
         <meta charset="utf-8">
@@ -12,7 +12,7 @@
             <script src="/js/respond.js"></script>
         <![endif]-->
         <title><%= yield :title %>北京十二中韶华文学社</title> 
-        <%= csrf_meta_tags %>
+<%= csrf_meta_tags %>
     </head>
     <body>
         <a name="top"></a>
@@ -23,19 +23,19 @@
                 <li><a class="cd-nav-trigger" href="#cd-primary-nav"><span></span></a></li>
             </ul>
         </header>
-<%=render :template=>'web_global/mainsite_navigator'%>
+<%=render :template=>'web_shell/mainsite_navigator'%>
         <% if @homepage %>
             <div class="jumbotron non-margin-bottom non-padding cd-main-content cd-head-fix">
                 <img alt="shaohua" src="<%= yield :web_local_head_img_src%>" id="toc">
             </div>
         <% end %>
-        <main class="cd-main-content chine">
+        <main class="cd-main-content chine" id="cd-main">
             <div class="cd-overlay"></div>
             <%= yield %>
         </main>
         <a href="#0" class="cd-back-top">Top</a>
         <footer class="footer cd-main-content">
-<%=render :template=>'web_global/mainsite_footer'%>
+<%=render :template=>'web_shell/mainsite_footer'%>
         </footer>
         <script src="/js/jquery.js"></script>
         <script src="/js/bootstrap.js"></script>
@@ -49,6 +49,7 @@
         <script src="/js/hmac-sha512.js"></script>
         <script src="/js/login.js"></script>
         <script src="/js/arctotop.js"></script>
+        <script src="/js/three.js"></script>
         <link href="/css/bootstrap.css" rel="stylesheet">
         <link href="/css/reset.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">

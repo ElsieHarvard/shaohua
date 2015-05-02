@@ -11,53 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313143948) do
-
-  create_table "analyses", force: :cascade do |t|
-    t.integer  "arcid"
-    t.string   "arctag"
-    t.integer  "arcview"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "arctype"
-  end
+ActiveRecord::Schema.define(version: 20150502115559) do
 
   create_table "articles", force: :cascade do |t|
-    t.string   "arctitle"
-    t.string   "arcauthor"
-    t.string   "arctype"
-    t.text     "arccontent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "archash"
-  end
-
-  create_table "periodical_articles", force: :cascade do |t|
-    t.string   "arcpicture"
-    t.string   "arctitle"
-    t.string   "arcpreauthor"
-    t.string   "arcauthor"
-    t.integer  "arcnumber"
-    t.text     "arcbeforecontent"
-    t.string   "arcattrbeforecontent"
-    t.text     "arccontent"
-    t.string   "arcattraftercontent"
-    t.text     "arcaftercontent"
-    t.string   "archash"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "prdhash"
+    t.string  "arc_title"
+    t.string  "arc_type"
+    t.string  "arc_preauthor"
+    t.string  "arc_author"
+    t.text    "arc_beforecontent"
+    t.string  "arc_attrbeforecontent"
+    t.text    "arc_content"
+    t.string  "arc_attraftercontent"
+    t.text    "arc_aftercontent"
+    t.string  "arc_picture"
+    t.string  "arc_prdhash"
+    t.string  "arc_prdnumber"
+    t.integer "arc_view"
+    t.integer "arc_top"
+    t.text    "arc_tag"
+    t.string  "arc_hash"
   end
 
   create_table "periodicals", force: :cascade do |t|
-    t.string   "prdtitle"
-    t.string   "prdinfo"
-    t.text     "prdpages"
-    t.string   "prdhash"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text     "prdmsg"
-    t.integer  "prdno"
+    t.string "prd_no"
+    t.string "prd_title"
+    t.string "prd_info"
+    t.string "prd_msg"
+    t.string "prd_hash"
   end
 
   create_table "web_accounts", force: :cascade do |t|
@@ -66,9 +46,9 @@ ActiveRecord::Schema.define(version: 20150313143948) do
     t.string   "usrtype"
     t.string   "usrhash"
     t.text     "usrpubkey"
+    t.text     "password_salt"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "password_salt"
   end
 
 end

@@ -1,20 +1,14 @@
 class WebShellController < ApplicationController
-  def index
-  	@homepage=true
-  end
-  def about
-  end
-  def bbs
-    
-  end
-  def bbs_usr
-    if /\h{39}/.match params[:hash]
-      @artc=[]
-      Article.all.each { |e| @artc.push e if Digest::SHA1.hexdigest(e.arcauthor) == params[:hash] }
-      @arca=@artc[0].arcauthor
-    else
-      raise 'BadAuthorHash'
-    end
-  end
-
+	def global_web_homepage
+		@homepage = true
+	end
+	def r404
+		render :template=>"web_shell/404",:status=>404
+	end
+	def r422
+		render :template=>"web_shell/422",:status=>422
+	end
+	def r500
+		render :template=>"web_shell/500",:status=>500
+	end
 end

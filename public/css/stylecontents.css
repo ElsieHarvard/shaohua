@@ -58,10 +58,18 @@
   padding-left: 5%;
   padding-right: 5%;
 }
+.container3{
+  padding-left: 15%;
+  padding-right: 15%;
+}
 @media only screen and (min-width: 1170px) {
   .container2{
     padding-left: 2em;
     padding-right: 2em;
+  }
+  .container3{
+    padding-left: 8em;
+    padding-right: 8em;
   }
 }
 .navlab{
@@ -193,4 +201,16 @@
     padding: 0;
     height: auto;
   }
+}
+canvas#main  {
+  width: 100%;
+  height: 540px;
+}
+@media only print {
+  .cd-main-header, .footer, .landscape {
+    display: none;
+  }
+}
+.nummarg {
+  padding-top: 1.5em;
 }

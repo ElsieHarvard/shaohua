@@ -115,3 +115,7 @@ body {
 .main {
   font-family: 'source code pro','scpol';
 }
+  
+.well {
+  word-break:break-all;
+}
