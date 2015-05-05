@@ -55,6 +55,20 @@ class ArticlesController < ApplicationController
 			raise404
 		end
 	end
+	def tag_of_article
+		raise404 unless /\A\h{40}\z/.match params[:hash]
+		if Article.exists?(:arc_hash=>params[:hash].downcase)
+			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
+			tag_ary = ""
+			arc.arc_tag.each_line{|w|
+				tag_class,tag_content = w.split(";", 2)
+				tag_ary.concat "<button class=\"btn "+tag_class+">"+tag_content.chomp+"</button>"
+			}
+			return render plain:tag_ary
+		else
+			raise404
+		end
+	end
 	def create_article
 		return unless need_login
 		arc=Article.new params.require(:article).permit(:arc_title,:arc_preauthor,:arc_author,:arc_number,:arc_type,
@@ -66,6 +80,9 @@ class ArticlesController < ApplicationController
 		rescue
 		end
 		unless Article.exists?(arc_hash:arc.arc_hash)
+			arc.arc_tag = ""
+			arc.arc_view = 0
+			arc.arc_top = 0
 			arc.save
 		else
 			arc=Article.find_by(arc_hash:arc.arc_hash)

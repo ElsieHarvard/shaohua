@@ -8,5 +8,6 @@ function arctotop() {
   	$("#cd-arcinfo").load("/article/top/"+$("#cd-arcinfo").attr("archsh"));})
 };
 $(document).ready(function() {
-  $("#cd-arcinfo").load("/article/top/"+$("#cd-arcinfo").attr("archsh"))
+  $("#cd-arcinfo").load("/article/top/"+$("#cd-arcinfo").attr("archsh"));
+  $("#cd-arctag").load("/article/tag/"+$("#cd-arctag").attr("archsh"));
 });
