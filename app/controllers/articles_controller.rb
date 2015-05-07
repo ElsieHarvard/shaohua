@@ -60,9 +60,10 @@ class ArticlesController < ApplicationController
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
 			tag_ary = ""
+			arc.update(arc_tag:"") if arc.arc_tag.nil?
 			arc.arc_tag.each_line{|w|
 				tag_class,tag_content = w.split(";", 2)
-				tag_ary.concat "<button class=\"btn "+tag_class+">"+tag_content.chomp+"</button>"
+				tag_ary.concat "<button class=\"btn "+tag_class+"\">"+tag_content.chomp+"</button>"+" "
 			}
 			return render plain:tag_ary
 		else
