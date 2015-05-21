@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   # Require Tags        Existed Article #
    get 'article/tag/:hash', to: 'articles#tag_of_article'
   # Sumbit a Tag        Existed Article #
-  post 'article/tag/comment', to: 'articles#tag_an_article'
+  post 'article/tag', to: 'articles#tag_an_article'
 
   #######################################
   # =================================== #

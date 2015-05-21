@@ -109,10 +109,19 @@
   padding-top: 8em;
   padding-bottom: 4em;
 }
+@media only screen and (min-width: 321px) and (max-width: 480px){
+  .cov-title, .cov-author {
+    font-size: 18px;
+  }
+  .cd-cover {
+    padding-top: 4.5em;
+    padding-bottom: 2.5em;
+  }
+}
 @media only screen and (max-width: 320px) {
   .cd-cover {
     padding-left: 2.5em;
-    padding-right: 2.5em;    
+    padding-right: 2.5em;
   }
 }
 .footer {
@@ -249,4 +258,8 @@ button2 > div {
   position:absolute;
   background-color: rgba(255,255,255,0.3);
   border-radius: 50%;
+}
+.cd-hps {
+  padding-left: 2em;
+  padding-right: 2em;
 }

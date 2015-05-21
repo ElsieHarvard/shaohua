@@ -297,7 +297,7 @@ xgallery
   display: none;
   text-align: center;
 }
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 360px) {
   .cd-gallery {
     padding: 40px 3%;
   }

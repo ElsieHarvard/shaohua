@@ -2,21 +2,21 @@
 <p>&nbsp;</p>
 <%title @article.arc_title+' - '%>
 <div class="container2">
+    <div class="page-header">
+        <h1><%=@article.arc_title%> <small>——<%=@article.arc_author%></small></h1>
+    </div>
     <div class="arc-indent">
-        <div class="page-header">
-            <h1><%=@article.arc_title%> <small>——<%=@article.arc_author%></small></h1>
-        </div>
         <div class="col-md-8">
             <%@article.arc_content.each_line do |w|%>
                 <p><%=w%></p>
             <% end %>
         </div>
-        <div class="col-md-4 landscape">
-            <div class="thumbnail">
-                <div id="cd-arc-info" archsh="<%=@article.arc_hash%>"></div>
-                <div id="cd-arc-tag" archsh="<%=@article.arc_hash%>"></div>
-                <div id="cd-arc-comment" archsh="<%=@article.arc_hash%>"></div>
-            </div>
+    </div>
+    <div class="col-md-4 landscape">
+        <div class="thumbnail container2">
+            <div id="cd-arc-info" archsh="<%=@article.arc_hash%>"></div>
+            <div id="cd-arc-tag" archsh="<%=@article.arc_hash%>"></div>
+            <div id="cd-arc-comment" archsh="<%=@article.arc_hash%>"></div>
         </div>
     </div>
 </div>
