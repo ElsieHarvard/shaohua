@@ -1,70 +1,12 @@
-        <% web_local_head_img_src '/img/midnight.jpg'%>
-        <!--<div>
-            <img src="img/shaohuaisback.png">
-        </div>-->
-        <div class="cd-tab-filter-wrapper">
-            <div class="cd-tab-filter">
-                <ul class="cd-filters">
-                    <li class="placeholder"> 
-                        <a data-type="all" href="#0">推荐文章</a>
-                    </li> 
-                    <li class="filter"><a class="selected" href="#0" data-type="all">推荐文章</a></li>
-                    <li class="filter" data-filter=".db-prose"><a href="#0" data-type=".db-prose">散文类</a></li>
-                    <li class="filter" data-filter=".db-novel"><a href="#0" data-type=".db-novel">小说类</a></li>
-                    <li class="filter" data-filter=".db-poetry"><a href="#0" data-type=".db-poetry">诗歌类</a></li>
-                    <li class="filter" data-filter=".db-drama"><a href="#0" data-type=".db-drama">戏剧类</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="container2">
-            <section class="cd-gallery lh16">
-                <ul class="non-padding-left non-margin-bottom">
-                    <% sz=Article.all.size-1 %>
-                    <% 16.times { %>
-                        <% arc = Article.find(rand(sz)+1)%>
-                        <li class="mix cd-item db-<%=arc.arc_type.gsub('db.','')%> <%=arc.arc_title%> <%=arc.arc_author%>"><%=mkcover(arc)%></li>
-                    <% } %>
-                    <% Article.toparticle(16).each do |arc| %>
-                        <li class="mix cd-item db-<%=arc.arc_type.gsub('db.','')%> <%=arc.arc_title%> <%=arc.arc_author%>"><%=mkcover(arc)%></li>
-                    <% end %>
-                    <li class="gap"></li>
-                    <li class="gap"></li>
-                    <li class="gap"></li>
-                    <li class="gap"></li>
-                </ul>
-                <div class="cd-fail-message">无搜索结果</div>
-            </section>
-        </div>
-        <div class="cd-filter">
-            <form>
-                <div class="cd-filter-block">
-                    <h4>搜索</h4>
-                    <div class="cd-filter-content">
-                        <input type="search" placeholder="搜索...">
-                    </div>
-                </div>
-                <div class="cd-filter-block">
-                    <h4>文章类型</h4>
-                    <ul class="cd-filter-content cd-filters list cd-items cd-container">
-                        <li class="cd-item">
-                            <input class="filter" data-filter=".db-prose" type="checkbox" id="checkbox1">
-                            <label class="checkbox-label" for="checkbox1">散文类</label>
-                        </li>
-                        <li class="cd-item">
-                            <input class="filter" data-filter=".db-novel" type="checkbox" id="checkbox2">
-                            <label class="checkbox-label" for="checkbox2">小说类</label>
-                        </li>
-                        <li class="cd-item">
-                            <input class="filter" data-filter=".db-poetry" type="checkbox" id="checkbox3">
-                            <label class="checkbox-label" for="checkbox3">诗歌类</label>
-                        </li>
-                        <li class="cd-item">
-                            <input class="filter" data-filter=".db-drama" type="checkbox" id="checkbox4">
-                            <label class="checkbox-label" for="checkbox4">戏剧类</label>
-                        </li>
-                    </ul>
-                </div>
-            </form>
-            <a href="#0" class="cd-close">关闭</a>
-        </div>
-        <a href="#0" class="cd-filter-trigger">按条件筛选</a>
+<div style="color:#FF0000">
+<h1>Warning: You are using a Internet Explorer which is too old!</h1>
+<h2>警告：您的IE网页浏览器版本过旧！</h2>
+</div>
+<p>推荐文章：</p>
+<ul>
+<li></li>
+</ul>
+<p>全部文章：</p>
+<ul>
+<li></li>
+</ul>
