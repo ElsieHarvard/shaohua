@@ -2,6 +2,10 @@ class WebShellController < ApplicationController
 	def global_web_homepage
 		@homepage = true
 	end
+	def ieraw
+		@homepage = true
+		@ieraw = true
+	end
 	def r404
 		render :template=>"web_shell/404",:status=>404
 	end

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
    get 'web_shell/404', to: 'web_shell#r404'
    get 'web_shell/422', to: 'web_shell#r422'
    get 'web_shell/500', to: 'web_shell#r500'
-
+   get 'web_shell/raw', to: 'web_shell#ieraw'
 
   #######################################
   # =================================== #

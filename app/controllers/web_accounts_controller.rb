@@ -10,7 +10,7 @@ class WebAccountsController < ApplicationController
 			psh=usr.usrpasswordhash
 			hsh=[OpenSSL::PKCS5.pbkdf2_hmac(pas,slt,itr,512,OpenSSL::Digest::SHA512.new)].pack('m')
 			if psh == hsh
-				cookies.signed[:webuser]=usr.usrhash
+				cookies.signed[:webuser]={:value=>usr.usrhash,:domain=>"12shaohua.oicp.net"}
 				LOGIN_LOG.info("User: "+usr.usrhash+"{"+usr.usrname+"} LogIn!\n")
 				render plain: 'true'
 			else

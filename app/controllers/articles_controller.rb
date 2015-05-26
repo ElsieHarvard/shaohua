@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 		elsif /\A\h{40}\Z/.match params[:hash]
 			if Article.exists?(:arc_hash=>params[:hash].downcase)
 				@article = Article.find_by(arc_hash:params[:hash].downcase)
-				cookies[:hash] = "visited;" if cookies[:hash].nil? or cookies[:hash].empty?
+				cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
 				@article.update(:arc_view=>(@article.arc_view.nil? ? 0 : @article.arc_view)+1)
 			else
 				return raise404
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
 		raise404 unless /\A\h{40}\z/.match params[:hash]
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
-			cookies[:hash] = "visited;" if cookies[:hash].nil? or cookies[:hash].empty?
+			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
 		else
 			raise404
 		end
@@ -50,10 +50,10 @@ class ArticlesController < ApplicationController
 		raise404 unless /\A\h{40}\z/.match params[:hash]
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
-			cookies[:hash] = "visited;" if cookies[:hash].nil? or cookies[:hash].empty?
-			arc.update(:arc_top=>(arc.arc_top.nil? ? 1 : arc.arc_top+1)) unless cookies[:hash].include? "toped;"
-			cookies[:hash] += "toped;"
-			return render plain:"<button class=\"btn btn-info\" onclick=\"return arctotop();\" id=\"topanarc\" archsh="+params[:hash].downcase+
+			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
+			arc.update(:arc_top=>(arc.arc_top.nil? ? 1 : arc.arc_top+1)) if cookies[params[:hash]+"toped"].nil?
+			cookies[params[:hash]+"toped;"] = {:value=>"toped;",:domain=>"12shaohua.oicp.net"}
+			return render plain:"<button class=\"btn btn-info toped\" onclick=\"return arctotop();\" id=\"topanarc\" archsh="+params[:hash].downcase+
 		       ">赞："+(arc.arc_top.nil? ? Proc.new{arc.update(:arc_top=>0);next 0}.call.to_s : arc.arc_top.to_s)+"</button>"+"<button class=\"btn btn-default\">浏览："+arc.arc_view.to_s+"</button>"
 		else
 			raise404
@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
 		raise404 unless /\A\h{40}\z/.match params[:hash]
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
-			cookies[:hash] = "visited;" if cookies[:hash].nil? or cookies[:hash].empty?
+			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
 			tag_ary = ""
 			arc.update(arc_tag:"") if arc.arc_tag.nil?
 			arc.arc_tag.each_line{|w|
@@ -82,7 +82,7 @@ class ArticlesController < ApplicationController
 		raise404 unless /\A\h{40}\z/.match params[:hash]
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
-			cookies[:hash] = "visited;" if cookies[:hash].nil? or cookies[:hash].empty?
+			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
 			arc.update(arc_tag:"")if arc.arc_tag.nil?
 			thistag = string_firewall(params[:taginfo][:tagname])
 			arc.update(arc_tag:arc.arc_tag+"btn-default;"+thistag+"\r\n")
