@@ -1,0 +1,15 @@
+.cd-nav-pic {
+  padding-top: 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #3a3f40;
+  margin-bottom: 12px;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-nav-pic {
+    border-right: 1px solid #e2e3df;
+    border-bottom: 0;
+    padding-top: 18px;
+    padding-bottom: 72px;
+  }
+}
+

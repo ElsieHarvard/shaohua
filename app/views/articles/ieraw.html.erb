@@ -1,9 +1,11 @@
+<div style="padding:20px;">
+
 <% unless (@periodical rescue nil)%>
 <p>&nbsp;</p>
 <%title @article.arc_title+' - '%>
 <div class="container2">
     <div class="page-header">
-        <h1><%=@article.arc_title%> <small>——<%=@article.arc_author%></small></h1>
+        <h1><%=@article.arc_title%><small>——<%=@article.arc_author%> @北京十二中韶华文学社</small></h1>
     </div>
     <div class="arc-indent">
         <div class="col-md-8">
@@ -57,3 +59,30 @@
     </div>
 </div>
 <% end %>
+<div style="border-top: 1px solid #eee;margin-top: 16px;">
+    <small>
+        <p>北京市第十二中学校园网网站 北京市第十二中学韶华文学社</p>
+        <p>A Part of the Campus Website of Beijing Number Twelve High School. Shaohua Student Literary Society in Beijing Number Twelve High School in China, Organization.</p>
+        <p>Articles Are Published Under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International.</p>
+        <p><a href="http://bj12hs.com.cn/">北京市第十二中学</a></p>
+        <!--
+        #==================================================================================================#
+        #=========================================== 测试服务器 ===========================================#
+        #==================================================================================================#
+        #============== No.15, YiZe Road, FengTai District, 100071, Beijing No.12 High School =============#
+        #============ sh.bj12hs.com.cn {京ICP备05069732;京公网安备110106000382号} bj12hs.com.cn ============#
+        #==================================================================================================#
+        -->
+        </small>
+        </div>
+<%=render :template=>navlogin[0],:locals=>{:usracc=>navlogin[1]}%>
+<div style="color:#FF0000;padding:20px;border: 12px solid #eee;">
+    <p>--------------------------------------</p>
+    <p>Hello visiter from January 1th, 1970.</p>
+    <p>Today is December 13th, 1901.</p>
+    <p>--------------------------------------</p>
+    <p>Well that's a joke, but you'd better <br>
+       check out you whether you are using a <br>
+       Internet Explorer 5 / 6 / 7 / 8 .</p>
+</div>
+</div>

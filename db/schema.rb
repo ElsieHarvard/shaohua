@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502115559) do
+ActiveRecord::Schema.define(version: 20150610134912) do
 
   create_table "articles", force: :cascade do |t|
     t.string  "arc_title"
@@ -30,6 +30,26 @@ ActiveRecord::Schema.define(version: 20150502115559) do
     t.integer "arc_top"
     t.text    "arc_tag"
     t.string  "arc_hash"
+    t.string  "arc_author_hash"
+    t.integer "arc_rate"
+  end
+
+  create_table "forum_accounts", force: :cascade do |t|
+    t.string   "user_name"
+    t.string   "user_hash"
+    t.string   "user_verification"
+    t.string   "user_account"
+    t.string   "user_nick_name"
+    t.text     "user_information"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "forum_boards", force: :cascade do |t|
+    t.string   "board_name"
+    t.string   "board_hash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "periodicals", force: :cascade do |t|

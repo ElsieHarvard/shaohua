@@ -35,32 +35,38 @@ class ArticlesController < ApplicationController
 			return raise404
 		end
 	end
+	def ieraw
+		@ieraw = true
+		show_article
+	end
 	def top_of_article
-		raise404 unless /\A\h{40}\z/.match params[:hash]
+		return raise404 unless /\A\h{40}\z/.match params[:hash]
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
 			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
 		else
-			raise404
+			return raise404
 		end
 		return render plain:"<button class=\"btn btn-info\" onclick=\"return arctotop();\" id=\"topanarc\" archsh="+params[:hash].downcase+
 		       ">赞："+(arc.arc_top.nil? ? Proc.new{arc.update(:arc_top=>0);next 0}.call.to_s : arc.arc_top.to_s)+"</button>"+"<button class=\"btn btn-default\">浏览："+arc.arc_view.to_s+"</button>"
 	end
 	def top_an_article
-		raise404 unless /\A\h{40}\z/.match params[:hash]
+		return raise404 unless /\A\h{40}\z/.match params[:hash]
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
 			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
 			arc.update(:arc_top=>(arc.arc_top.nil? ? 1 : arc.arc_top+1)) if cookies[params[:hash]+"toped"].nil?
+			arc.update(arc_rate:0)if arc.arc_rate.nil?
+			arc.update(arc_rate:(arc.arc_rate*(1.0-1.0/arc.arc_view)+(5*1000.0+arc.arc_view*1.0/(arc.arc_top+1))/arc.arc_view).round)
 			cookies[params[:hash]+"toped;"] = {:value=>"toped;",:domain=>"12shaohua.oicp.net"}
-			return render plain:"<button class=\"btn btn-info toped\" onclick=\"return arctotop();\" id=\"topanarc\" archsh="+params[:hash].downcase+
+			return render plain:"<button class=\"btn btn-info toped\" disabled=\"disabled\" onclick=\"return arctotop();\" id=\"topanarc\" archsh="+params[:hash].downcase+
 		       ">赞："+(arc.arc_top.nil? ? Proc.new{arc.update(:arc_top=>0);next 0}.call.to_s : arc.arc_top.to_s)+"</button>"+"<button class=\"btn btn-default\">浏览："+arc.arc_view.to_s+"</button>"
 		else
-			raise404
+			return raise404
 		end
 	end
 	def tag_of_article
-		raise404 unless /\A\h{40}\z/.match params[:hash]
+		return raise404 unless /\A\h{40}\z/.match params[:hash]
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
 			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
@@ -75,11 +81,11 @@ class ArticlesController < ApplicationController
 			inp = "<form class=\"form-horizontal\" id=\"cd-tag-new\" onsubmit=\"return tagadd();\" action=\"/article/tag/\" accept-charset=\"UTF-8\" method=\"post\">"+ath+metacode+tag_ary+"<div class=\"input-group\">"+"<input class=\"form-control\" id=\"inputTagName\" placeholder=\"新标签...\" required=\"required\" type=\"text\" name=\"taginfo[tagname]\"><span class=\"input-group-btn\"><button class=\"btn btn-default\" type=\"sumbit\">提交</button></span></div>"
 			return render plain:inp+"</form>"
 		else
-			raise404
+			return raise404
 		end
 	end
 	def tag_an_article
-		raise404 unless /\A\h{40}\z/.match params[:hash]
+		return raise404 unless /\A\h{40}\z/.match params[:hash]
 		if Article.exists?(:arc_hash=>params[:hash].downcase)
 			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
 			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
@@ -88,7 +94,38 @@ class ArticlesController < ApplicationController
 			arc.update(arc_tag:arc.arc_tag+"btn-default;"+thistag+"\r\n")
 			return render plain:arc.inspect
 		else
-			raise404
+			return raise404
+		end
+	end
+	def rate_of_article
+		return raise404 unless /\A\h{40}\z/.match params[:hash]
+		if Article.exists?(:arc_hash=>params[:hash].downcase)
+			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
+			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
+			tag_ary = ""
+			arc.update(arc_rate:0) if arc.arc_rate.nil?
+			rateb = ""+
+			"<button class=\"btn btn-danger\" id=\"ratesofarc\" onclick=\"return arcrate(1);\">1</button>"+
+			"<button class=\"btn btn-warning\" id=\"ratesofarc\" onclick=\"return arcrate(2);\">2</button>"+
+			"<button class=\"btn btn-info\" id=\"ratesofarc\" onclick=\"return arcrate(3);\">3</button>"+
+			"<button class=\"btn btn-primary\" id=\"ratesofarc\" onclick=\"return arcrate(4);\">4</button>"+
+			"<button class=\"btn btn-success\" id=\"ratesofarc\" onclick=\"return arcrate(5);\">5</button>"
+			return render plain:"<button class=\"btn btn-default\" id=\"ratesofarc\" archsh="+params[:hash].downcase+">Rate: "+sprintf("%.3f",arc.arc_rate/1000.0)+"</button>"+rateb
+		else
+			return raise404
+		end
+	end
+	def rate_an_article
+		return raise404 unless /\A\h{40}\z/.match params[:hash]
+		if Article.exists?(:arc_hash=>params[:hash].downcase)
+			arc=Article.find_by(:arc_hash=>params[:hash].downcase)
+			cookies[params[:hash]] = {:value=>"visited;",:domain=>"12shaohua.oicp.net"} if cookies[params[:hash]].nil? or cookies[params[:hash]].empty?
+			arc.update(arc_rate:0)if arc.arc_rate.nil?
+			raise unless rate=/\A[12345]\Z/.match(params[:rate])
+			arc.update(arc_rate:(arc.arc_rate*(1.0-1.0/arc.arc_view)+(rate[0].to_i*1000.0+arc.arc_view*1.0/(arc.arc_top+1))/arc.arc_view).round)
+			return render plain:"<button class=\"btn btn-default\" id=\"ratesofarc\" archsh="+params[:hash].downcase+">Rate: "+sprintf("%.3f",arc.arc_rate/1000.0)+"</button><button class=\"btn btn-default\">Thanks for your rating!</button>"
+		else
+			return raise404
 		end
 	end
 	def create_article
@@ -117,7 +154,7 @@ class ArticlesController < ApplicationController
 	end
 	def update_article
 		return unless need_login
-		raise404 unless /\A\h{40}\z/.match params[:hash]
+		return raise404 unless /\A\h{40}\z/.match params[:hash]
 		arc = Article.find_by(arc_hash:params[:article][:arc_hash].downcase)
 		arc.update params.require(:article).permit(:arc_title,:arc_preauthor,:arc_author,:arc_number,:arc_type,
 			:arc_beforecontent,:arc_attrbeforecontent,:arc_content,:arc_attraftercontent,:arc_aftercontent,:prdhash)

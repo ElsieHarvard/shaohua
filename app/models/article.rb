@@ -4,6 +4,7 @@
 #  Meta Data     
 # ------
 #  arc_hash
+#  arc_author_hash
 # ------
 #  Info          
 # ------
@@ -35,10 +36,13 @@ class Article < ActiveRecord::Base
 	before_validation :remove_space
 	after_validation :get_arc_hash
 	def self.toparticle(num)
-		return self.order(:arc_top).last(num).reverse
+		return self.order(:arc_rate).last(num).reverse
 	end
 	def self.navtop(type,num)
-		return self.where(arc_type:type).order(:arc_top).last(num).reverse
+		return self.where(arc_type:type).order(:arc_rate).last(num).reverse
+	end
+	def self.same_author(author_hash)
+		return self.where(arc_author_hash:author_hash)
 	end
 	def arcphsh(src)
 		write_attribute :arcpicture,OpenSSL::Digest::SHA256.hexdigest(src)
@@ -46,6 +50,7 @@ class Article < ActiveRecord::Base
 	private
 		def get_arc_hash
 			write_attribute :arc_hash,OpenSSL::Digest::SHA1.hexdigest(arc_content)
+			write_attribute :arc_author_hash,OpenSSL::Digest::SHA1.hexdigest(arc_author)
 		end
 		def remove_space
 			string_remove_all_space self.arc_title

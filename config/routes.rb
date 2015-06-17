@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   post 'article/create', to: 'articles#create_article'
   # Update              Existed Article #
    put 'article/update', to: 'articles#update_article'
+  # Raw                          IE RAW #
+   get 'web_shell/raw/:hash', to: 'articles#ieraw'
   # ----------------------------------- #
   #               Top Article           #
   # ----------------------------------- #
@@ -72,6 +74,13 @@ Rails.application.routes.draw do
    get 'article/tag/:hash', to: 'articles#tag_of_article'
   # Sumbit a Tag        Existed Article #
   post 'article/tag', to: 'articles#tag_an_article'
+  # ----------------------------------- #
+  #              Rate Article           #
+  # ----------------------------------- #
+  # Require Rate        Existed Article #
+   get 'article/rate/:hash', to: 'articles#rate_of_article'
+  # Sumbit a Rate       Existed Article #
+  post 'article/rate', to: 'articles#rate_an_article'
 
   #######################################
   # =================================== #

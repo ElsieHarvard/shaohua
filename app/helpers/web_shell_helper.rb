@@ -5,8 +5,4 @@ module WebShellHelper
 	def web_local_head_img_src(src)
 		content_for(:web_local_head_img_src){src}
 	end
-	def toparticle(sz)
-		Article.
-		return 
-	end
 end

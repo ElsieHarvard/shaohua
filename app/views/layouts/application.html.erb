@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%unless (@weblayoutadmin rescue nil) %>
+<%unless (@ieraw rescue nil) %>
+<%unless (@bbs rescue nil) %>
 <html lang="zh-cn">
     <head>
         <meta charset="utf-8">
@@ -7,22 +9,26 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="/favicon.ico">
-        <script>if(RegExp("MSIE [5-8]").exec(navigator.userAgent)){document.execCommand("stop") ? location.assign("/raw"): window.stop() ? location.assign("/raw") : alert("MSIE Too Old!");};</script>
+        <%unless @article%><script>if(RegExp("MSIE [5-8]").exec(navigator.userAgent)){document.execCommand("stop") ? location.assign("/web_shell/raw"): window.stop() ? location.assign("/web_shell/raw") : alert("MSIE Too Old!");};</script>
+        <%else%>
+        <script>if(RegExp("MSIE [5-8]").exec(navigator.userAgent)){document.execCommand("stop") ? location.assign("/web_shell/raw/<%=@article.arc_hash%>"): window.stop() ? location.assign("/web_shell/raw/<%=@article.arc_hash%>") : alert("MSIE Too Old!");};</script>
+        <%end%>
+        <!-- <script src="https://apis.google.com/js/platform.js"></script>-->
         <!--[if lt IE 9]>
             <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js">
-            <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js">
+            <script src="http://cdn.bootcss.com/html5shiv/r29/html5.min.js">
         <![endif]-->
         <title><%= yield :title %>北京十二中韶华文学社</title> 
 <%= csrf_meta_tags %>
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?72231ed6e8430cf423abda0710f59cb6";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?72231ed6e8430cf423abda0710f59cb6";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
     </head>
     <body>
         <a name="top"></a>
@@ -35,7 +41,7 @@
         </header>
         <% if @homepage %>
             <div class="jumbotron non-margin-bottom non-padding cd-main-content cd-head-fix">
-                <img alt="shaohua" src="<%= yield :web_local_head_img_src%>" id="toc">
+                <img alt="shaohua" src="<%= yield :web_local_head_img_src%>" id="toc" onError="this.src='http://ElsieHarvard.gitcafe.io/img/midnight.jpg'"/>
             </div>
         <% end %>
         <main class="cd-main-content chine" id="cd-main">
@@ -47,26 +53,61 @@
         <footer class="footer cd-main-content">
 <%=render :template=>'web_shell/mainsite_footer'%>
         </footer>
-        <script src="http://ElsieHarvard.gitcafe.io/js/jquery.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/bootstrap.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/ie10-viewport-bug-workaround.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/jquery.mobile.custom.min.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/modernizr.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/backtotop.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/jquery.mixitup.min.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/velocity.min.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/main.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/login.js"></script>
-        <script src="http://ElsieHarvard.gitcafe.io/js/arctotop.js"></script>
-        <link href="http://ElsieHarvard.gitcafe.io/css/bootstrap.css" rel="stylesheet">
-        <link href="http://ElsieHarvard.gitcafe.io/css/reset.css" rel="stylesheet">
-        <link href="http://ElsieHarvard.gitcafe.io/css/style.css" rel="stylesheet">
-        <link href="http://ElsieHarvard.gitcafe.io/css/backtotop.css" rel="stylesheet">
-        <link href="http://ElsieHarvard.gitcafe.io/css/stylecontents.css" rel="stylesheet">
-        <link href="http://ElsieHarvard.gitcafe.io/css/styleperiodical.css" rel="stylesheet">
-        <link href="http://ElsieHarvard.gitcafe.io/css/bbs.css" rel="stylesheet">
+        <div>
+            <script src="http://ElsieHarvard.gitcafe.io/js/jquery.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/bootstrap.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/ie10-viewport-bug-workaround.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/jquery.mobile.custom.min.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/modernizr.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/backtotop.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/jquery.mixitup.min.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/velocity.min.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/main.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/login.js"></script>
+            <script src="http://ElsieHarvard.gitcafe.io/js/arctotop.js"></script>
+            <link href="http://ElsieHarvard.gitcafe.io/css/bootstrap.css" rel="stylesheet">
+            <link href="http://ElsieHarvard.gitcafe.io/css/reset.css" rel="stylesheet">
+            <link href="http://ElsieHarvard.gitcafe.io/css/style.css" rel="stylesheet">
+            <link href="http://ElsieHarvard.gitcafe.io/css/backtotop.css" rel="stylesheet">
+            <link href="http://ElsieHarvard.gitcafe.io/css/stylecontents.css" rel="stylesheet">
+            <link href="http://ElsieHarvard.gitcafe.io/css/styleperiodical.css" rel="stylesheet">
+            <link href="http://ElsieHarvard.gitcafe.io/css/bbs.css" rel="stylesheet">
+            <link rel="stylesheet" href="/css/tmp.css">
+        </div>
     </body>
 </html>
+<% else %>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><%= yield :title %></title> 
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <%= yield %>
+        <link rel="stylesheet" href="/css/xiyushaoguang.css">
+    </body>
+</html>
+<% end %>
+<% else %>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="/favicon.ico">
+        <title><%= yield :title %>北京十二中韶华文学社</title> 
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <%= yield %>
+    </body>
+</html>
+<% end %>
 <% else %>
 <html lang="en-us">
     <head>

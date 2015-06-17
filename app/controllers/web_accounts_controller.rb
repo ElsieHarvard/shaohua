@@ -20,10 +20,16 @@ class WebAccountsController < ApplicationController
 		  render plain: 'false'
 		end
 	end
+	def self_home_page
+		@account = usrlogin
+	end
 	def publickey
 		return OpenSSL::PKey::RSA.new 
 	end
 	private
+	def usrlogin
+		return (WebAccounts.find_by(usrhash:cookies.signed[:webuser]) rescue nil)
+	end
 	def firewall(src)
 		return src.gsub(/\W/,'')
 	end

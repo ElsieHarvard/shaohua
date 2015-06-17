@@ -3,6 +3,6 @@
 <div class="cd-cont">
     <% ["db.prose","db.novel","db.poetry","db.drama"].each do |type| %>
         <%typer = {"db.prose"=>"散文类","db.novel"=>"小说类","db.poetry"=>"诗歌类","db.drama"=>"短剧类"}[type]%>
-        <%=render :template=>'articles/show_article_list', :locals => {:hctitle=>typer,:list=>Article.where(arc_type: type)}%>
+        <%=render :template=>'articles/show_article_list', :locals => {:hctitle=>typer,:list=>Article.where(arc_type: type).order(:arc_rate).reverse}%>
     <% end %>
 </div>

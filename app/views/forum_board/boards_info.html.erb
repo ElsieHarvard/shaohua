@@ -1,0 +1,13 @@
+<li class="cd-board-tag">
+	<p>版块列表：<br><small>Boards List:</small></p>
+</li>
+<ul class="cd-board-info">
+	<% ForumBoard.all.each do |board| %>
+		<li class="cd-board-info-list">
+			<%= render :template=>'forum_board/board_info', :locals => { :board => board } %>
+		</li>
+	<% end %>
+	<li class="cd-board-info-new">
+		<p>新建版块<br><small>New Board</small></p>
+	</li>
+</ul>
