@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+  def need_admin
+    return true
+  end
   def raise404
     return render :template=>"web_shell/404",:status=>404
   end

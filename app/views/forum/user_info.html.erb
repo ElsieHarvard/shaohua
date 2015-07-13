@@ -1,0 +1,13 @@
+<li class="cd-user-account-tag">
+    <p>账户信息：<br><small>Account Information:</small></p>
+</li>
+<ul class="cd-user-account-info">
+    <li class="cd-user-account-info-welcome">
+        <p>您好，<bdi><%= user.user_nick_name || user.user_name %></bdi>！<br><small>Welcome <bdi><%= usrlogin ? usrlogin.usrname : "Guest" %>!</bdi></small></p>
+    </li>
+    <li class="cd-user-account-info-list">
+        <p>账户积分：<%= user.user_info["账户积分"] %></p>
+        <p>管理权限：<%= user.user_info["管理权限"] %></p>
+        <p>权限版块：<%= user.user_info["权限版块"] %></p>
+    </li>
+</ul>

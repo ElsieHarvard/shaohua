@@ -1,23 +1,2 @@
 <% @bbs = true %>
-<% title "北京十二中细雨韶光开放文学论坛" %>
-<nav>
-    <p>北京十二中细雨韶光开放文学论坛</p>
-    <ul class="cd-user">
-        <% user = who_is_that %>
-        <%= render :template=>'forum_board/user_info', :locals => { :user => user } %>
-    </ul>
-</nav>
-<main>
-    <ul class="cd-board">
-        <%= render :template=>'forum_board/boards_info' %>
-    </ul>
-</main>
-<footer class="cd-footer">
-    <p>北京十二中细雨韶光开放文学论坛</p>
-    <p>XiYuShaoGuang Literary Open Forum of Beijing Number Twelve High School in China, Organization.</p>
-    <!--
-    #==================================================================================================#
-    #=========================================== 测试服务器 ===========================================#
-    #==================================================================================================#
-    -->
-</footer>
+<%= render :template=>'forum/forum' %>

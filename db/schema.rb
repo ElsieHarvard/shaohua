@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610134912) do
+ActiveRecord::Schema.define(version: 20150626122422) do
 
   create_table "articles", force: :cascade do |t|
     t.string  "arc_title"
@@ -52,12 +52,19 @@ ActiveRecord::Schema.define(version: 20150610134912) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "forum_threads", force: :cascade do |t|
+    t.string "thread_title"
+    t.string "thread_hash"
+    t.string "thread_info"
+    t.string "thread_board"
+  end
+
   create_table "periodicals", force: :cascade do |t|
-    t.string "prd_no"
-    t.string "prd_title"
-    t.string "prd_info"
-    t.string "prd_msg"
-    t.string "prd_hash"
+    t.integer "prd_no"
+    t.string  "prd_title"
+    t.string  "prd_info"
+    t.text    "prd_msg"
+    t.string  "prd_hash"
   end
 
   create_table "web_accounts", force: :cascade do |t|

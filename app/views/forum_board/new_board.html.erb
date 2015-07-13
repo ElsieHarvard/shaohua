@@ -1,0 +1,11 @@
+<% title '新建版块 - '%>
+<p>&nbsp;</p>
+<div class="cd-cont">
+    <%= form_tag({:controller=>"forum_board",:action=>"create_board"},{:method=>"post",:multipart=>"true",:onkeydown=>"if(event.ctrlKey&&event.keyCode==13)this.submit()"}) do %>
+        <div class="input-group">
+            <span class="input-group-addon chinese">版块标题</span>
+            <%= text_field "board","board_name",:class=>"form-control chinese",:placeholder=>"BoardTitle"%>
+        </div>
+        <p class="text-right"><input role="button" class="btn btn-default chinese" type="submit" value="提交"></p>
+    <% end %>
+</div>

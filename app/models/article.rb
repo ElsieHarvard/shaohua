@@ -39,7 +39,11 @@ class Article < ActiveRecord::Base
 		return self.order(:arc_rate).last(num).reverse
 	end
 	def self.navtop(type,num)
-		return self.where(arc_type:type).order(:arc_rate).last(num).reverse
+		res = self.where(arc_type:type).order(:arc_rate).last(num*32).reverse
+		num = [res.size,num].min
+		rl = []
+		num.times{rl.push res[rand(res.size-1)]}
+		return rl
 	end
 	def self.same_author(author_hash)
 		return self.where(arc_author_hash:author_hash)

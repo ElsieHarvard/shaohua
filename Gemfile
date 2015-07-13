@@ -1,7 +1,9 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
+
+gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin] 
 
 # Use Digest SHA3
-gem 'digest-sha3'
+#gem 'digest-sha3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

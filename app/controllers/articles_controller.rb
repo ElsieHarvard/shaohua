@@ -131,7 +131,7 @@ class ArticlesController < ApplicationController
 	def create_article
 		return unless need_login
 		arc=Article.new params.require(:article).permit(:arc_title,:arc_preauthor,:arc_author,:arc_number,:arc_type,
-			:arc_beforecontent,:arc_attrbeforecontent,:arc_content,:arc_attraftercontent,:arc_aftercontent,:prdhash)
+			:arc_beforecontent,:arc_attrbeforecontent,:arc_content,:arc_attraftercontent,:arc_aftercontent,:arc_prdhash,:arc_prdnumber)
 		begin
 			picmime=File.extname(params[:article][:arc_picture].tempfile)
 			pic=File.open(params[:article][:arc_picture].tempfile,'rb'){|w|w.read}
@@ -154,10 +154,9 @@ class ArticlesController < ApplicationController
 	end
 	def update_article
 		return unless need_login
-		return raise404 unless /\A\h{40}\z/.match params[:hash]
 		arc = Article.find_by(arc_hash:params[:article][:arc_hash].downcase)
 		arc.update params.require(:article).permit(:arc_title,:arc_preauthor,:arc_author,:arc_number,:arc_type,
-			:arc_beforecontent,:arc_attrbeforecontent,:arc_content,:arc_attraftercontent,:arc_aftercontent,:prdhash)
+			:arc_beforecontent,:arc_attrbeforecontent,:arc_content,:arc_attraftercontent,:arc_aftercontent,:arc_prdhash,:arc_prdnumber)
 		redirect_to arc
 	end
 	private

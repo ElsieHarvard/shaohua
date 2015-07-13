@@ -1,0 +1,19 @@
+<% title "北京十二中细雨韶光开放文学论坛" %>
+<nav>
+    <p>北京十二中细雨韶光开放文学论坛</p>
+    <ul class="cd-user">
+        <% user = who_is_that %>
+        <%= render :template=>'forum/user_info', :locals => { :user => user } %>
+    </ul>
+</nav>
+<main>
+    <ul class="cd-board">
+        <%= render :template=>'forum/boards_info' %>
+    </ul>
+    <ul class="cd-admin">
+        <%= render :template=>'forum/admin' %>
+    </ul>
+</main>
+<footer class="cd-footer">
+    <%= render :template=>'forum/footer' %>
+</footer>

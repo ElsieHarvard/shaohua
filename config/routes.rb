@@ -128,6 +128,15 @@ Rails.application.routes.draw do
    get 'bbs', to: 'web_accounts#self_home_page'
   # Require                Existed User #
    get 'bbs/:hash', to: 'web_accounts#usr_home_page'
+  # ----------------------------------- #
+  #            Manage Boards            #
+  # ----------------------------------- #
+  # Require                   New Board #
+   get 'bbs/new/board', to: 'forum_board#new_board'
+  # Create                    New Board #
+  post 'bbs/create/board', to: 'forum_board#create_board'
+  # Require               Existed Board #
+   get 'bbs/show/board/:hash', to: 'forum_board#show_board'
 
   #######################################
   # =================================== #

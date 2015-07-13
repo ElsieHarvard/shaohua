@@ -15,7 +15,7 @@
                         <td><%=link_to w.arc_title,'/article/'+w.arc_hash%></td>
                         <td><%=link_to w.arc_author,'/bbs/'+w.arc_author_hash%></td>
                         <td><small><%=w.arc_content[0..59]%>...</small></td>
-                        <%if @localusrlogin then%><td><%=sprintf("%.3f",w.arc_rate/1000.0)%></td><%end%>
+                        <%if @localusrlogin then%><td><small><%=sprintf("%.3f",w.arc_rate/1000.0)%></small></td><%end%>
                     </tr>
                 <% end %>
             </tbody>
