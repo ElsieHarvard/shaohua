@@ -42,7 +42,11 @@ class Article < ActiveRecord::Base
 		res = self.where(arc_type:type).order(:arc_rate).last(num*32).reverse
 		num = [res.size,num].min
 		rl = []
-		num.times{rl.push res[rand(res.size-1)]}
+		num.times{
+			arc = res[rand(res.size)]
+			arc = res[rand(res.size)] while rl.include?(arc)
+			rl.push arc
+		}
 		return rl
 	end
 	def self.same_author(author_hash)

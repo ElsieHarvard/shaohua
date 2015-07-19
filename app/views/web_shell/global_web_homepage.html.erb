@@ -21,7 +21,7 @@
                 <ul class="non-padding-left non-margin-bottom">
                     <% sz=Article.all.size-1 %>
                     <% 16.times { %>
-                        <% arc = Article.find(rand(sz)+1)%>
+                        <% begin arc = Article.find(rand(sz))rescue retry end%>
                         <li class="mix cd-item db-<%=arc.arc_type.gsub('db.','')%> <%=arc.arc_title%> <%=arc.arc_author%>"><%=mkcover(arc)%></li>
                     <% } %>
                     <% Article.toparticle(16).each do |arc| %>
