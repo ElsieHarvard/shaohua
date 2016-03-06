@@ -20,4 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title: "Light Drizzle Literary Forum"
+  idhsh: "Unique Identity Hash"
+  submit: "Submit"
+  author: "Author: "
+  request_new_form_account: "Generate a new Forum Account"
+  form_account_user_name: "Nickname"
+  input_form_account_user_name: "Input nickname here..."
+  new_article: "Create a new Article"
+  article_title: "Title"
+  article_author: "Author"
+  article_content: "Content"

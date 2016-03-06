@@ -3,6 +3,7 @@ capybara-*.html
 .rspec
 /log
 /tmp
+/workpath
 # /db/*.sqlite3
 /private/*
 /public/system

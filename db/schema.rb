@@ -11,71 +11,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626122422) do
+ActiveRecord::Schema.define(version: 20160120105616) do
 
   create_table "articles", force: :cascade do |t|
-    t.string  "arc_title"
-    t.string  "arc_type"
-    t.string  "arc_preauthor"
-    t.string  "arc_author"
-    t.text    "arc_beforecontent"
-    t.string  "arc_attrbeforecontent"
-    t.text    "arc_content"
-    t.string  "arc_attraftercontent"
-    t.text    "arc_aftercontent"
-    t.string  "arc_picture"
-    t.string  "arc_prdhash"
-    t.string  "arc_prdnumber"
-    t.integer "arc_view"
-    t.integer "arc_top"
-    t.text    "arc_tag"
-    t.string  "arc_hash"
-    t.string  "arc_author_hash"
-    t.integer "arc_rate"
+    t.string   "idhsh"
+    t.string   "arc_title"
+    t.string   "ext_author_idhsh"
+    t.text     "arc_content"
+    t.text     "marshal_info_hash"
+    t.text     "formatted_information"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "forum_accounts", force: :cascade do |t|
-    t.string   "user_name"
-    t.string   "user_hash"
-    t.string   "user_verification"
-    t.string   "user_account"
-    t.string   "user_nick_name"
-    t.text     "user_information"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "idhsh"
+    t.string   "ext_shell_idhsh"
+    t.string   "usr_name"
+    t.text     "marshal_info_hash"
+    t.text     "formatted_information"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
-  create_table "forum_boards", force: :cascade do |t|
-    t.string   "board_name"
-    t.string   "board_hash"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "shell_users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "idhsh",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
-  create_table "forum_threads", force: :cascade do |t|
-    t.string "thread_title"
-    t.string "thread_hash"
-    t.string "thread_info"
-    t.string "thread_board"
+  add_index "shell_users", ["email"], name: "index_shell_users_on_email", unique: true
+  add_index "shell_users", ["reset_password_token"], name: "index_shell_users_on_reset_password_token", unique: true
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
   end
 
-  create_table "periodicals", force: :cascade do |t|
-    t.integer "prd_no"
-    t.string  "prd_title"
-    t.string  "prd_info"
-    t.text    "prd_msg"
-    t.string  "prd_hash"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
   end
 
-  create_table "web_accounts", force: :cascade do |t|
-    t.string   "usrname"
-    t.string   "usrpasswordhash"
-    t.string   "usrtype"
-    t.string   "usrhash"
-    t.text     "usrpubkey"
-    t.text     "password_salt"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
 end

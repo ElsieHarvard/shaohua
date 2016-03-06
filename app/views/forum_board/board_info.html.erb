@@ -1,6 +1,0 @@
-<p><%= board.board_name %> <a href="/bbs/show/board/<%= board.board_hash %>">+</a><br><small><%= board.board_hash %></small></p>
-<p><small>版主：
-<% ForumAccount.all.each do |user| %>
-    <bdi><%= user.user_nick_name if user.user_info["权限版块"].split(";").include?(board_hash) %></bdi>, 
-<% end %>
-</small></p>

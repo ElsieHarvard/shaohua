@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_name: MyString
-  user_hash: MyString
-  user_verification: MyString
-  user_account: MyString
-  user_nick_name: MyString
-  user_information: MyText
+  idhsh: MyString
+  ext_shell_idhsh: MyString
+  usr_name: MyString
+  marshal_info_hash: MyText
+  formatted_information: MyText
 
 two:
-  user_name: MyString
-  user_hash: MyString
-  user_verification: MyString
-  user_account: MyString
-  user_nick_name: MyString
-  user_information: MyText
+  idhsh: MyString
+  ext_shell_idhsh: MyString
+  usr_name: MyString
+  marshal_info_hash: MyText
+  formatted_information: MyText

@@ -1,13 +1,18 @@
 class ForumAccount < ActiveRecord::Base
-	def self.empty_new
-		self.new( user_name:"游客", user_information:"账户积分;0\r\n个性签名;\r\n管理权限;nil\r\n权限版块;nil\r\n" )
-	end
-	def user_info
-		result = Hash.new
-		user_information.each_line do |line|
-			k,v = line.split(";",2)
-			result[k] = v
-		end
-		return result
-	end
+  Default_Marshal_Info = ''
+  Default_Formatted_Info = ''
+  acts_as_taggable_on :tags
+  # Make id-hash before create
+  before_create :make_id_hash
+  def chkidhsh
+    make_id_hash
+  end
+  private
+  def refresh_idhsh
+    make_id_hash
+    self.save
+  end
+  def make_id_hash
+    self.idhsh = SHA3::Digest::SHA224.hexdigest self.usr_name+self.ext_shell_idhsh
+  end
 end

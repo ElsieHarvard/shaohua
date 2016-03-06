@@ -2,18 +2,10 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  def need_login(cmd=nil)
-    if (WebAccounts.find_by(usrhash:cookies.signed[:webuser]) rescue nil)
-      return true
-    else
-      render :template=>'web_shell/needlogin'
-      return false
-    end
-  end
-  def need_admin
-    return true
-  end
-  def raise404
-    return render :template=>"web_shell/404",:status=>404
+  # Parameter Hash
+  def parahsh( raise_400 = false )
+    hsh = params[:idhsh]
+    return hsh if /\A\h{56}\z/.match hsh
+    raise '400' if raise_400
   end
 end
