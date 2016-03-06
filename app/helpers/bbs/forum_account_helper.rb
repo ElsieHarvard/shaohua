@@ -1,0 +1,2 @@
+module Bbs::ForumAccountHelper
+end

@@ -1,0 +1,10 @@
+<% title( I18n.t :new_article ) %>
+<div class="page-header">
+  <h1><%= I18n.t :new_article %></h1>
+</div>
+<%= render :template => 'article/article_info_table',
+  :locals=>{
+    :mtd => 'post',
+    :act => 'create_new_article',
+    :arc => Article.new,
+} %>

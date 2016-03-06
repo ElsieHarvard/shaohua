@@ -1,0 +1,17 @@
+<p>Local User</p>
+<p>Signed in?</p>
+<p><%= shell_user_signed_in? %></p>
+<p>Primary Email:</p>
+<p><%= current_shell_user.email %></p>
+<p><%= I18n.t :idhsh %>:</p>
+<p><%= current_shell_user.idhsh %></p>
+<p>Has Forum Account?</p>
+<% current_forum_accounts = ForumAccount.where( ext_shell_idhsh: current_shell_user.idhsh ) %>
+<%= !current_forum_accounts.empty? %>
+<p>Forum Accounts:</p>
+<% current_forum_accounts.each do |forum_account| %>
+    <p><%= forum_account.usr_name %></p>
+    <p><%= forum_account.idhsh %></p>
+    <p><%= forum_account.tag_list.inspect  %></p>
+<% end %>
+<p><a href="<%=bbs_user_new_path%>">Add Forum Account</p>

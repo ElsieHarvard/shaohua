@@ -1,0 +1,9 @@
+<% title %>
+<div class="cd-banner">
+  <img alt="shaohua" src="/img/midnight.webp" onError="this.src='/img/midnight.jpg'"/>
+</div>
+<div>
+  <% Article.all.each do |arc| %>
+    <p><%= arc.inspect %></p>
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+<div class="cd-main">
+    <%= form_tag({:controller=>"article",:action=>act},{:method=>mtd,:multipart=>"true",:onkeydown=>"if(event.ctrlKey&&event.keyCode==13)this.submit()"}) do %>
+        <% if ( need_hsh rescue nil ) %>
+        <div class="input-group">
+            <span class="input-group-addon"><%= I18n.t :idhsh %></span>
+            <%= text_field "article","arc_hash",:class=>"form-control",:placeholder=>"ArticleHash",:value=>arc.idhsh%>
+        </div>
+        <% end %>
+        <div class="input-group">
+            <span class="input-group-addon"><%= I18n.t :article_title %></span>
+            <%= text_field "article","arc_title",:class=>"form-control",:placeholder=>"ArticleTitle",:value=>arc.arc_title%>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><%= I18n.t :article_author %></span>
+            <%= text_field "article","arc_author",:class=>"form-control",:placeholder=>"ArticleAuthor",:value=>(arc.ext_author_idhsh ? arc.arc_author : '' )%>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><%= I18n.t :article_content %></span>
+            <%= text_area "article","arc_content",:style=>"width:100%",:class=>"form-control",:placeholder=>"ArticleContent",:value=>arc.arc_content%>
+        </div>
+        <p class="text-right"><input role="button" class="btn btn-default" type="submit" value="<%= I18n.t :submit %>"></p>
+    <% end %>
+</div>

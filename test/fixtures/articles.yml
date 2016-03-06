@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idhsh: MyString
+  arc_title: MyString
+  ext_author_idhsh: MyString
+  arc_content: MyText
+  marshal_info_hash: MyText
+  formatted_information: MyText
+
+two:
+  idhsh: MyString
+  arc_title: MyString
+  ext_author_idhsh: MyString
+  arc_content: MyText
+  marshal_info_hash: MyText
+  formatted_information: MyText

@@ -1,0 +1,118 @@
+/* Define Color ( Apple Color Schedule ) */
+$color-cyan:            #5AC8FA;
+$color-yellow:          #FFCC00;
+$color-orange:          #FF9500;
+$color-pink:            #FF2D55;
+$color-blue:            #007AFF;
+$color-green:           #4CD964;
+$color-red:             #FF3B30;
+$color-gray:            #8E8E93;
+
+$color-white:           #FAFAFA;
+$color-pure-white:      #FFFFFF;
+$color-black:           #1A1A1A;
+$color-pure-black:      #000000;
+
+$color-main-gray:       #2e3233;
+
+$color-dark-gray:       #434346;
+$color-dark-cyan:       #003f58;
+$color-deep-dark-gray:  #0F0F10;
+$color-lighter-gray:    #DDDDDD;
+
+$color-darker: rgba(0, 0, 0, 0.2);
+$color-lighter: rgba(255, 255, 255, 0.2);
+$color-more-darker: rgba(0, 0, 0, 0.4);
+$color-more-lighter: rgba(255, 255, 255, 0.4);
+$color-even-more-darker: rgba(0, 0, 0, 0.6);
+$color-even-more-lighter: rgba(255, 255, 255, 0.6);
+$color-extrem-darker: rgba(0, 0, 0, 0.8);
+$color-extrem-lighter: rgba(255, 255, 255, 0.8);
+
+
+// colors
+
+$color-1: $color-main-gray; // grey dark
+$color-2: $color-cyan; // green
+$color-3: $color-lighter-gray; // grey light
+$color-4: $color-pure-white; // white
+$color-5: $color-dark-cyan;
+
+
+/* Define Border */
+$border: 1px solid $color-lighter-gray;
+
+/* Define Device Size */
+
+/* header size */
+
+$header-height-S: 50px;
+$header-height-L: 80px;
+
+/* Navigation size */
+
+$nav-width-S: 260px;
+
+/* Search size */
+
+$search-height-S: 50px;
+$search-height-L: 120px;
+
+/* z-index */
+
+$below-content: 1;
+$content: 2;
+$above-content: 3;
+
+
+$S:     360px;
+$M:     768px;
+$L:     960px;
+$maxL:    $L - 1px;
+
+@import 'backtotop';
+
+@import 'bourbon';
+
+@import 'navigator';
+
+@import 'notice';
+
+@font-face {
+  font-family: "NotoSans";
+  src: url("/fonts/NotoSansHans-Light.otf");
+}
+
+
+a {
+  color: $color-5;
+  text-decoration: none;
+}
+
+.cd-main, .cd-main-header, .cd-notice, .cd-footer {
+  font-family: sans-serif, 'NotoSans';
+}
+
+.cd-main-header {
+  border-bottom: $border;
+}
+
+.cd-main {
+  border-bottom: $border;
+}
+
+.cd-js {
+  display: none;
+}
+
+.cd-banner {
+
+}
+
+.cd-footer {
+  background: $color-pure-white;
+  padding: 2em;
+  bottom: 0;
+  z-index: 0;
+}
+

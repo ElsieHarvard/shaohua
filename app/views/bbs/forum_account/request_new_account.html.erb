@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1><%= I18n.t :request_new_form_account %></h1>
+</div>
+<div class="cd-main">
+  <%= form_tag({
+    :controller => 'forum_account',
+    :action => 'create_new_account',
+  },{
+    :method => 'post',
+    :multipart => 'true',
+    :onkeydown => 'if(event.ctrlKey&&event.keyCode==13){this.submit();}'
+  }) do %>
+    <div class="input-group">
+      <span class="input-group-addon"><%= I18n.t :form_account_user_name %></span>
+        <%= text_field "account","usr_name",
+          :class=>"form-control",
+          :placeholder=>(I18n.t :input_form_account_user_name),
+          :value=>''%>
+    </div>
+    <input role="button" class="btn btn-default" type="submit" value="<%= I18n.t :submit %>">
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h1><%= arc.arc_title %> <small><%= I18n.t :author %><%= arc.arc_author.usr_name %></small></h1>
+</div>
+<div class="arc-indent">
+  <div class="col-md-8">
+    <% arc.arc_content.each_line do |w| %>
+      <p><% unless /\Aimg\:*/.match w %><%= w %><% else %>
+        <img src="<%= w.split(":")[1] %>">
+      <% end %></p>
+    <% end %>
+  </div>
+</div>
